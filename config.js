@@ -5,8 +5,8 @@ var extend = require('extend');
 var defaultConfig = {
     folders: {
         source: 'src',
-        release: 'dist',
-        temp: 'temp/',
+        temp: '.tmp/',
+        release: 'app',
         gulpConfig: 'node_modules/yoso-gulp/'
     },
     paths: {
