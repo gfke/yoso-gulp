@@ -6,6 +6,7 @@ var defaultConfig = {
     folders: {
         source: 'src',
         temp: '.tmp/',
+        release: 'app',
         gulpConfig: 'node_modules/gfk-gulp-config/'
     },
     paths: {
