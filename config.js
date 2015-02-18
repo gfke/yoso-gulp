@@ -7,15 +7,25 @@ var defaultConfig = {
         source: 'src',
         release: 'dist',
         temp: 'temp/',
-        gulpConfig: 'node_modules/gfk-gulp-config/'
+        gulpConfig: 'node_modules/yoso-gulp/'
     },
     paths: {
         src: {
-            index: '/index.html',
-            scripts: '/modules/**/*.js',
-            tests: '/**/*.spec.js',
-            styles: '/styles/**/*.scss',
-            templates: '/modules/**/*.html'
+            get index() {
+                return global.config.folders.source + '/index.html'
+            },
+            get scripts() {
+                return global.config.folders.source + '/modules/**/*.js'
+            },
+            get tests() {
+                return global.config.folders.source + '/**/*.spec.js'
+            },
+            get styles() {
+                return global.config.folders.source + '/styles/**/*.scss'
+            },
+            get templates() {
+                return global.config.folders.source + '/modules/**/*.html'
+            }
         }
     },
     filenames: {
