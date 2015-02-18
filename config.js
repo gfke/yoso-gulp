@@ -15,7 +15,7 @@ var defaultConfig = {
                 return global.config.folders.source + '/index.html'
             },
             get scripts() {
-                return global.config.folders.source + '/modules/**/*.js'
+                return global.config.folders.source + '/**/*.js'
             },
             get tests() {
                 return global.config.folders.source + '/**/*.spec.js'

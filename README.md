@@ -27,3 +27,7 @@ If a style dependency is a SCSS file it will be compiled to CSS on the fly
 ### lint
 This task runs [jscs](http://jscs.info/) and [JSLint](http://jslint.com/) with the configurations stored
 in this module (local settings are ignored) to ensure same code style and quality on all modules
+
+### UnitTest
+This task runs your unit tests directly in Node using [Jasmine](http://jasmine.github.io/)
+No [karma](http://karma-runner.github.io) or [phantomJs](http://phantomjs.org/) necessary
