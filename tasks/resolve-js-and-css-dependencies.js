@@ -4,6 +4,7 @@ var browserify = require('browserify');
 var fs = require('fs');
 var gulp = require('gulp');
 var partialify = require('partialify');
+var path = require('path');
 var rework = require('rework');
 var reworkNpm = require('rework-npm');
 var source = require('vinyl-source-stream');
@@ -32,8 +33,11 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function () {
      * return the CSS
      */
     function compileScss(src, file) {
-        if (file.indexOf('.scss') !== -1) {
-            //TODO: Compile SCSS
+        if (path.extname(file) === '.scss') {
+            //TODO: We need a library to call sass.renderSync
+            //No NPM module using the ruby version provides this currently
+            //alternatively we'll need to loop through each node_module
+            //and compile every scss file in its folder beforehand
             return '/*compiled scss*/';
         }
         return src;
