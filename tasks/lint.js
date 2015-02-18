@@ -2,6 +2,7 @@
 
 var gulp = require('gulp');
 var jshint = require('gulp-jshint');
+var jscs = require('gulp-jscs');
 var stylish = require('jshint-stylish');
 
 /**
@@ -9,7 +10,8 @@ var stylish = require('jshint-stylish');
  * Uses a global lint config to evaluate errors
  */
 module.exports = gulp.task('lint', function () {
-  return gulp.src(global.config.paths.src.scripts)
-  .pipe(jshint(global.config.jsLint))
-  .pipe(jshint.reporter(stylish));
+    return gulp.src(global.config.paths.src.scripts)
+        .pipe(jshint(global.config.jsLint))
+        .pipe(jscs(global.config.jsCs))
+        .pipe(jshint.reporter(stylish));
 });

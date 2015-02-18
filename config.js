@@ -44,6 +44,11 @@ var defaultConfig = {
     get jsLint() {
         return global.config.folders.gulpConfig + '.jshintrc';
     },
+    get jsCs() {
+        return {
+            configPath: global.config.folders.gulpConfig + '.jscsrc'
+        };
+    },
     uglify: {
         mangle: false
     },
