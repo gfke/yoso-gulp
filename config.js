@@ -5,7 +5,7 @@ var extend = require('extend');
 var defaultConfig = {
     folders: {
         source: './src',
-        temp: './.tmp/',
+        temp: './.tmp',
         release: './app',
         gulpConfig: './node_modules/yoso-gulp/'
     },
@@ -15,7 +15,10 @@ var defaultConfig = {
                 return global.config.folders.source + '/index.html';
             },
             get scripts() {
-                return global.config.folders.source + '/**/*.js';
+                return global.config.folders.source + '/modules/**/*.js';
+            },
+            get main() {
+                return global.config.folders.source + '/modules/index.js';
             },
             get tests() {
                 return global.config.folders.source + '/**/*.spec.js';
@@ -29,15 +32,16 @@ var defaultConfig = {
         },
         temp: {
             get styles() {
-                return global.config.folders.temp + 'bundle.css';
+                return global.config.folders.temp + '/bundle.css';
             }
         },
         release: {
             get styles() {
-                return global.config.release.temp + 'bundle.css';
+                return global.config.folders.release + '/bundle.css';
             },
             get scripts() {
-                return global.config.release.temp + 'bundle.js';
+                //TODO:Find better solution to creat vinyl source stream in resolve-js-and-css-dependencies.js:90
+                return 'bundle.js';
             }
         }
     },
