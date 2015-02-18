@@ -15,7 +15,7 @@ var source = require('vinyl-source-stream');
  *  CSS bundle
  *  If a style dependency is a SCSS file it will be compiled on the fly
  **/
-module.exports = gulp.task('ResolveJsAndCssDependencies', function (done) {
+module.exports = gulp.task('ResolveJsAndCssDependencies', function () {
     var allStyleDependencies = [];
     var importStatements = [];
 
@@ -40,7 +40,7 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function (done) {
     }
 
     function saveStyleSheetToTemp(styleSheetContent) {
-        var compiledDependenciesStylePath = global.config.filenames.build.styles;
+        var compiledDependenciesStylePath = global.config.paths.release.styles;
         fs.writeFileSync(compiledDependenciesStylePath, styleSheetContent);
     }
 
@@ -48,8 +48,14 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function (done) {
      * After browserify gathered the styles from all packages,
      * rework will fetch all styles and combine them in one stylesheet
      * Then writes that to the temp folder and signals gulp that the task is done
+     * This functions also looks for errors on browserify bundle events and throws them
+     * as they would be suppressed elsewise
      */
-    function resolveCssDependecies() {
+    function resolveCssDependencies(error) {
+        if (error) {
+            throw error;
+        }
+
         var inMemoryStyleSheetWithDependencies = importStatements.join('');
 
         var compiledDependenciesStyleSheet = rework(inMemoryStyleSheetWithDependencies)
@@ -57,8 +63,7 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function (done) {
             .toString();
 
         saveStyleSheetToTemp(compiledDependenciesStyleSheet);
-
-        done();
+        //done();
     }
 
     /**
@@ -81,8 +86,8 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function (done) {
         //this must also be defined in package.json of the compiling module
         .transform(partialify)
         //When done with JS dependencies call the function to process CSS dependencies
-        .bundle(resolveCssDependecies)
-        .pipe(source(global.config.filenames.build.scripts))
+        .bundle(resolveCssDependencies)
+        .pipe(source(global.config.paths.release.scripts))
         .pipe(gulp.dest(global.config.folders.release));
 
 });

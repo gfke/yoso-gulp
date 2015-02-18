@@ -22,9 +22,9 @@ While the packages are resolved, each package with a style defined in will be ad
 of CSS dependencies which will then be resolved by rework to combine all CSS files from all packages into one
 CSS bundle
 If a style dependency is a SCSS file it will be compiled to CSS on the fly
+*Works only in the app - won't do anything in other projects like directives*
 
-
-### lint
+### LintScripts
 This task runs [jscs](http://jscs.info/) and [JSLint](http://jslint.com/) with the configurations stored
 in this module (local settings are ignored) to ensure same code style and quality on all modules
 

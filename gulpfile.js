@@ -2,10 +2,23 @@
 
 var gulp = require('gulp');
 
+global.config = {
+    folders: {
+        gulpConfig: ''
+    },
+    paths: {
+        src: {
+            get scripts() {
+                return [
+                    'tasks/**/*.js',
+                    '*.js'
+                ];
+            }
+        }
+    }
+};
+
 require('./config');
 require('./index');
-
-global.config.paths.src.scripts = ['tasks/**/*.js', '*.js'];
-global.config.folders.gulpConfig = '';
 
 gulp.task('default', ['lint']);

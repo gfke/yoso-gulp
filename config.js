@@ -4,43 +4,41 @@ var extend = require('extend');
 
 var defaultConfig = {
     folders: {
-        source: 'src',
-        temp: '.tmp/',
-        release: 'app',
-        gulpConfig: 'node_modules/yoso-gulp/'
+        source: './src',
+        temp: './.tmp/',
+        release: './app',
+        gulpConfig: './node_modules/yoso-gulp/'
     },
     paths: {
         src: {
             get index() {
-                return global.config.folders.source + '/index.html'
+                return global.config.folders.source + '/index.html';
             },
             get scripts() {
-                return global.config.folders.source + '/**/*.js'
+                return global.config.folders.source + '/**/*.js';
             },
             get tests() {
-                return global.config.folders.source + '/**/*.spec.js'
+                return global.config.folders.source + '/**/*.spec.js';
             },
             get styles() {
-                return global.config.folders.source + '/styles/**/*.scss'
+                return global.config.folders.source + '/styles/**/*.scss';
             },
             get templates() {
-                return global.config.folders.source + '/modules/**/*.html'
+                return global.config.folders.source + '/modules/**/*.html';
             }
-        }
-    },
-    filenames: {
+        },
         temp: {
             get styles() {
                 return global.config.folders.temp + 'bundle.css';
             }
         },
-        build: {
-            styles: 'bundle.css',
-            scripts: 'bundle.js'
-        },
         release: {
-            styles: 'bundle.min.css',
-            scripts: 'bundle.min.js'
+            get styles() {
+                return global.config.release.temp + 'bundle.css';
+            },
+            get scripts() {
+                return global.config.release.temp + 'bundle.js';
+            }
         }
     },
     ports: {
@@ -79,4 +77,4 @@ var defaultConfig = {
 //parts of the config may be defined in the directive gulpfile
 //and may overrides every setting
 global.config = global.config || {};
-global.config = extend(true, defaultConfig, global.config);
+global.config = extend(defaultConfig, global.config);
