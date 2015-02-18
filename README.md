@@ -13,4 +13,17 @@ $ npm install --save git@github.com:gfke/yoso-gulp.git
 ```bash
  gulp --develop (default) 
 ```
+
 ## Tasks
+
+### ResolveJsAndCssDependencies
+This task calls browserify to resolve all JS dependencies and compiles them into a release bundle
+While the packages are resolved, each package with a style defined in will be added to an temporary list
+of CSS dependencies which will then be resolved by rework to combine all CSS files from all packages into one
+CSS bundle
+If a style dependency is a SCSS file it will be compiled to CSS on the fly
+
+
+### lint
+This task runs [jscs](http://jscs.info/) and [JSLint](http://jslint.com/) with the configurations stored
+in this module (local settings are ignored) to ensure same code style and quality on all modules
