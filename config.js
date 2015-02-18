@@ -5,8 +5,7 @@ var extend = require('extend');
 var defaultConfig = {
     folders: {
         source: 'src',
-        release: 'dist',
-        temp: 'temp/',
+        temp: '.tmp/',
         gulpConfig: 'node_modules/gfk-gulp-config/'
     },
     paths: {
