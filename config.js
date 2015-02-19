@@ -48,6 +48,9 @@ var defaultConfig = {
             },
             get scripts() {
                 return global.config.folders.release + '/' + global.config.filenames.release.scripts;
+            },
+            get index() {
+                return global.config.folders.release + '/index.html';
             }
         }
     },
@@ -86,6 +89,12 @@ var defaultConfig = {
     minifyCss: {
         keepBreaks: false
     },
+    minifyHtml: {
+        comments: true,
+        empty: true,
+        spare: true,
+        quotes: true
+    },
     autoPrefixer: {
         browsers: ['last 2 versions'],
         cascade: false
@@ -97,8 +106,12 @@ var defaultConfig = {
     },
     serve: {
         watchFiles: {
-            temp: global.config.folders.temp + '/**/*.{js,css,html}',
-            release: global.config.folders.release + '/**/*.{js,html,css,svg}'
+            get temp() {
+                return global.config.folders.temp + '/**/*.{js,css,html}';
+            },
+            get release() {
+                return global.config.folders.release + '/**/*.{js,html,css,svg}';
+            }
         }
     }
 };

@@ -1,9 +1,9 @@
 'use strict';
 
-var gulp = require('gulp');
-var rename = require('gulp-rename');
-var uglify = require('gulp-uglify');
-var ngAnnotate = require('gulp-ng-annotate');
+var gulp       = require('gulp'),
+    rename     = require('gulp-rename'),
+    uglify     = require('gulp-uglify'),
+    ngAnnotate = require('gulp-ng-annotate');
 
 /**
  * Minify browserify bundle and templateCache

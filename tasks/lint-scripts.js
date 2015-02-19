@@ -1,9 +1,9 @@
 'use strict';
 
-var gulp        = require('gulp'),
-    jshint      = require('gulp-jshint'),
-    jscs        = require('gulp-jscs'),
-    stylish     = require('jshint-stylish');
+var gulp    = require('gulp'),
+    jshint  = require('gulp-jshint'),
+    jscs    = require('gulp-jscs'),
+    stylish = require('jshint-stylish');
 
 /**
  * Runs jsLint on the provided Javascript files

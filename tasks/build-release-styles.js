@@ -1,9 +1,9 @@
 'use strict';
 
-var gulp = require('gulp');
-var rename = require('gulp-rename');
-var minifyCSS = require('gulp-minify-css');
-var autoprefixer = require('gulp-autoprefixer');
+var gulp         = require('gulp'),
+    rename       = require('gulp-rename'),
+    minifyCSS    = require('gulp-minify-css'),
+    autoprefixer = require('gulp-autoprefixer');
 
 /**
  * Minify CSS bundle and apply vendor prefixes
