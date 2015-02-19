@@ -1,16 +1,16 @@
 'use strict';
 
-var browserify = require('browserify');
-var extend = require('extend');
-var fs = require('fs');
-var gulp = require('gulp');
-var mkdirp = require('mkdirp');
-var partialify = require('partialify');
-var path = require('path');
-var rework = require('rework');
-var reworkNpm = require('rework-npm');
-var sass = require('node-sass');
-var source = require('vinyl-source-stream');
+var browserify = require('browserify'),
+    extend     = require('extend'),
+    fs         = require('fs'),
+    gulp       = require('gulp'),
+    mkdirp     = require('mkdirp'),
+    partialify = require('partialify'),
+    path       = require('path'),
+    rework     = require('rework'),
+    reworkNpm  = require('rework-npm'),
+    sass       = require('node-sass'),
+    source     = require('vinyl-source-stream');
 
 /**
  *  This task calls browserify to resolve all JS dependencies and compiles them into a release bundle
@@ -77,7 +77,7 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function (done) {
             .toString();
 
         saveStyleSheetToTemp(compiledDependenciesStyleSheet);
-        done();
+        areWeDoneYet();
     }
 
     /**
@@ -92,7 +92,20 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function (done) {
         }
     }
 
-//Call browserify to resolve all require statements
+    var semaphoreCount = 0,
+        semaphoreTarget = 2;
+    /**
+     * Semaphore function to check if all concurrent tasks
+     * have been completed
+     */
+    function areWeDoneYet() {
+        semaphoreCount++;
+        if (semaphoreCount === semaphoreTarget) {
+            done();
+        }
+    }
+
+    //Call browserify to resolve all require statements
     browserify()
         .on('package', gatherPackagesWithStyles)
         .add(global.config.paths.src.main)
@@ -102,5 +115,6 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function (done) {
         //When done with JS dependencies call the function to process CSS dependencies
         .bundle(resolveCssDependencies)
         .pipe(source(global.config.filenames.release.scripts))
-        .pipe(gulp.dest(global.config.folders.temp));
+        .pipe(gulp.dest(global.config.folders.temp))
+        .on('end', areWeDoneYet);
 });
