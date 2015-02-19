@@ -5,6 +5,7 @@ var extend = require('extend');
 var defaultConfig = {
     folders: {
         source: './source',
+        scss: './styles',
         temp: './.tmp',
         release: './app',
         gulpConfig: './node_modules/yoso-gulp/'
@@ -15,19 +16,19 @@ var defaultConfig = {
                 return global.config.folders.source + '/index.html';
             },
             get scripts() {
-                return global.config.folders.source + '/modules/**/*.js';
+                return global.config.folders.source + '/**/*.js';
             },
             get main() {
-                return global.config.folders.source + '/modules/index.js';
+                return global.config.folders.source + '/index.js';
             },
             get tests() {
                 return global.config.folders.source + '/**/*.spec.js';
             },
             get styles() {
-                return global.config.folders.source + '/styles/**/*.scss';
+                return global.config.folders.scss + '/**/*.scss';
             },
             get templates() {
-                return global.config.folders.source + '/modules/**/*.html';
+                return global.config.folders.source + '/**/*.html';
             }
         },
         temp: {
