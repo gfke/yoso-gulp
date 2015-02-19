@@ -36,10 +36,14 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function () {
      */
     function compileScss(src, file) {
         if (path.extname(file) === '.scss') {
-            var options = {data: src};
+            var options = {
+                data: src,
+                includePaths: [path.dirname(file)]
+            };
             options = extend(options, global.config.sass);
 
-            return sass.renderSync(options);
+            var sassResult = sass.renderSync(options);
+            return sassResult.css;
         }
         return src;
     }
@@ -94,5 +98,4 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function () {
         .pipe(source(global.config.paths.release.scripts))
         .pipe(gulp.dest(global.config.folders.release));
 
-})
-;
+});

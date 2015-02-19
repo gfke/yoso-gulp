@@ -61,9 +61,6 @@ var defaultConfig = {
             configPath: global.config.folders.gulpConfig + '.jscsrc'
         };
     },
-    uglify: {
-        mangle: false
-    },
     get scssLint() {
         return {
             'config': global.config.folders.gulpConfig + '/scss-lint.yml'
@@ -71,6 +68,9 @@ var defaultConfig = {
     },
     sass: {
         sourceMap: false
+    },
+    uglify: {
+        mangle: false
     },
     buildProcess: {
         useTemplateCache: false
