@@ -44,8 +44,13 @@ var defaultConfig = {
                 return global.config.folders.release + '/index.css';
             },
             get scripts() {
-                return global.config.folders.release +  '/index.js';
+                return global.config.folders.release + '/' + global.config.filenames.release.scripts;
             }
+        }
+    },
+    filenames: {
+        release: {
+            scripts: 'index.js'
         }
     },
     ports: {

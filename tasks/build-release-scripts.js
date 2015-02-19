@@ -11,5 +11,5 @@ module.exports = gulp.task('BuildReleaseScripts', function () {
         .pipe(ngAnnotate())
         .pipe(uglify((global.config.uglify)))
         .pipe(rename({suffix: '.' + global.config.buildProcess.cacheKey}))
-        .pipe(gulp.dest(global.config.paths.dest.release.scripts));
+        .pipe(gulp.dest(global.config.folders.release));
 });
