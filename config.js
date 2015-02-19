@@ -37,6 +37,9 @@ var defaultConfig = {
             },
             get scripts() {
                 return global.config.folders.temp + '/index.js';
+            },
+            get index() {
+                return global.config.folders.temp + '/index.html';
             }
         },
         release: {
@@ -79,6 +82,12 @@ var defaultConfig = {
         useTemplateCache: false,
         isReleaseBuild: false,
         cacheKey: 'dev'
+    },
+    serve: {
+        watchFiles: {
+            temp: global.config.folders.temp + '/**/*.{js,css,html}',
+            release: global.config.folders.release + '/**/*.{js,html,css,svg}'
+        }
     }
 };
 
