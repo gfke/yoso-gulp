@@ -36,5 +36,10 @@ in this module (local settings are ignored) to ensure same sass style and qualit
 This task runs your unit tests directly in Node using [Jasmine](http://jasmine.github.io/)
 No [karma](http://karma-runner.github.io) or [phantomJs](http://phantomjs.org/) necessary
 
-### MinifyScripts
-This task minifies all provided javascript files. 
+### BuildReleaseScripts
+Minify browserify bundle and templateCache
+After that, add the cache key to the filename and copy it to the app folder
+
+### BuildReleaseScripts
+Minify CSS bundle and apply vendor prefixes
+After that, add the cache key to the filename and copy it to the app folder

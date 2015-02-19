@@ -4,6 +4,7 @@ var browserify = require('browserify');
 var extend = require('extend');
 var fs = require('fs');
 var gulp = require('gulp');
+var mkdirp = require('mkdirp');
 var partialify = require('partialify');
 var path = require('path');
 var rework = require('rework');
@@ -49,7 +50,12 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function () {
     }
 
     function saveStyleSheetToTemp(styleSheetContent) {
-        fs.writeFileSync(global.config.paths.temp.styles, styleSheetContent);
+        mkdirp(global.config.folders.temp, function (err) {
+            if (err) {
+                throw err;
+            }
+            fs.writeFileSync(global.config.paths.temp.styles, styleSheetContent);
+        });
     }
 
     /**
@@ -94,7 +100,6 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function () {
         .transform(partialify)
         //When done with JS dependencies call the function to process CSS dependencies
         .bundle(resolveCssDependencies)
-        .pipe(source())
-        .pipe(gulp.dest(global.config.paths.temp.styles));
-
+        .pipe(source(global.config.filenames.release.scripts))
+        .pipe(gulp.dest(global.config.folders.temp));
 });
