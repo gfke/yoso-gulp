@@ -41,8 +41,8 @@ var defaultConfig = {
                 return global.config.folders.release + '/index.css';
             },
             get scripts() {
-                //TODO:Find better solution to creat vinyl source stream in resolve-js-and-css-dependencies.js:90
-                return 'bundle.js';
+                //TODO:Find better solution to create vinyl source stream in resolve-js-and-css-dependencies.js:90
+                return 'index.js';
             }
         }
     },
