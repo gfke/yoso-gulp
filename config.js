@@ -80,6 +80,13 @@ var defaultConfig = {
     uglify: {
         mangle: false
     },
+    minifyCss: {
+        keepBreaks: false
+    },
+    autoPrefixer: {
+        browsers: ['last 2 versions'],
+        cascade: false
+    },
     buildProcess: {
         useTemplateCache: false,
         isReleaseBuild: false,

@@ -37,5 +37,9 @@ This task runs your unit tests directly in Node using [Jasmine](http://jasmine.g
 No [karma](http://karma-runner.github.io) or [phantomJs](http://phantomjs.org/) necessary
 
 ### BuildReleaseScripts
- Minify browserify bundle and templateCache
- After that, add the cache key to the filename and copy it to the app folder
+Minify browserify bundle and templateCache
+After that, add the cache key to the filename and copy it to the app folder
+
+### BuildReleaseScripts
+Minify CSS bundle and apply vendor prefixes
+After that, add the cache key to the filename and copy it to the app folder
