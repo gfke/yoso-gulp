@@ -7,6 +7,7 @@ var partialify = require('partialify');
 var path = require('path');
 var rework = require('rework');
 var reworkNpm = require('rework-npm');
+var sass = require('node-sass');
 var source = require('vinyl-source-stream');
 
 /**
@@ -34,11 +35,9 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function () {
      */
     function compileScss(src, file) {
         if (path.extname(file) === '.scss') {
-            //TODO: We need a library to call sass.renderSync
-            //No NPM module using the ruby version provides this currently
-            //alternatively we'll need to loop through each node_module
-            //and compile every scss file in its folder beforehand
-            return '/*compiled scss*/';
+            return sass.renderSync({
+                data: src
+            });
         }
         return src;
     }
@@ -82,7 +81,7 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function () {
         }
     }
 
-    //Call browserify to resolve all require statements
+//Call browserify to resolve all require statements
     browserify()
         .on('package', gatherPackagesWithStyles)
         .add(global.config.paths.src.main)
@@ -94,4 +93,5 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function () {
         .pipe(source(global.config.paths.release.scripts))
         .pipe(gulp.dest(global.config.folders.release));
 
-});
+})
+;
