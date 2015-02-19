@@ -34,6 +34,9 @@ var defaultConfig = {
         temp: {
             get styles() {
                 return global.config.folders.temp + '/index.css';
+            },
+            get scripts() {
+                return global.config.folders.temp + '/index.js';
             }
         },
         release: {
@@ -41,8 +44,7 @@ var defaultConfig = {
                 return global.config.folders.release + '/index.css';
             },
             get scripts() {
-                //TODO:Find better solution to creat vinyl source stream in resolve-js-and-css-dependencies.js:90
-                return 'bundle.js';
+                return global.config.folders.release +  '/index.js';
             }
         }
     },
@@ -74,7 +76,9 @@ var defaultConfig = {
         mangle: false
     },
     buildProcess: {
-        useTemplateCache: false
+        useTemplateCache: false,
+        isReleaseBuild: false,
+        cacheKey: 'dev'
     }
 };
 

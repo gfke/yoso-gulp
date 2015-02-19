@@ -49,8 +49,7 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function () {
     }
 
     function saveStyleSheetToTemp(styleSheetContent) {
-        var compiledDependenciesStylePath = global.config.paths.release.styles;
-        fs.writeFileSync(compiledDependenciesStylePath, styleSheetContent);
+        fs.writeFileSync(global.config.paths.temp.styles, styleSheetContent);
     }
 
     /**
@@ -95,7 +94,7 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function () {
         .transform(partialify)
         //When done with JS dependencies call the function to process CSS dependencies
         .bundle(resolveCssDependencies)
-        .pipe(source(global.config.paths.release.scripts))
-        .pipe(gulp.dest(global.config.folders.release));
+        .pipe(source())
+        .pipe(gulp.dest(global.config.paths.temp.styles));
 
 });
