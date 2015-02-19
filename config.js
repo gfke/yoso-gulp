@@ -4,7 +4,7 @@ var extend = require('extend');
 
 var defaultConfig = {
     folders: {
-        source: './src',
+        source: './source',
         temp: './.tmp',
         release: './app',
         gulpConfig: './node_modules/yoso-gulp/'
@@ -32,12 +32,12 @@ var defaultConfig = {
         },
         temp: {
             get styles() {
-                return global.config.folders.temp + '/bundle.css';
+                return global.config.folders.temp + '/index.css';
             }
         },
         release: {
             get styles() {
-                return global.config.folders.release + '/bundle.css';
+                return global.config.folders.release + '/index.css';
             },
             get scripts() {
                 //TODO:Find better solution to creat vinyl source stream in resolve-js-and-css-dependencies.js:90
