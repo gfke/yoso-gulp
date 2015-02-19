@@ -98,10 +98,10 @@ var defaultConfig = {
     serve: {
         watchFiles: {
             get temp() {
-                return global.config.folders.temp + '/**/*.{js,css,html}'
+                return global.config.folders.temp + '/**/*.{js,css,html}';
             },
             get release() {
-                return global.config.folders.release + '/**/*.{js,html,css,svg}'
+                return global.config.folders.release + '/**/*.{js,html,css,svg}';
             }
         }
     }

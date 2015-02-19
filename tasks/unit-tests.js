@@ -1,6 +1,6 @@
 'use strict';
-var gulp = require('gulp');
-var jasmine = require('gulp-jasmine');
+var gulp    = require('gulp'),
+    jasmine = require('gulp-jasmine');
 
 /**
  * This task runs your unit tests directly in node using jasmine
