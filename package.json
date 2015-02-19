@@ -27,6 +27,7 @@
     "gulp-jasmine": "^2.0.0",
     "gulp-jscs": "^1.4.0",
     "gulp-jshint": "^1.9.2",
+    "gulp-scss-lint": "^0.1.7",
     "jshint-stylish": "^1.0.0",
     "node-sass": "^2.0.1",
     "partialify": "^3.1.3",

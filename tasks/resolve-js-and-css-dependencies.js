@@ -43,7 +43,7 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function () {
             options = extend(options, global.config.sass);
 
             var sassResult = sass.renderSync(options);
-            return sassResult.css ;
+            return sassResult.css;
         }
         return src;
     }
@@ -98,5 +98,4 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function () {
         .pipe(source(global.config.paths.release.scripts))
         .pipe(gulp.dest(global.config.folders.release));
 
-})
-;
+});
