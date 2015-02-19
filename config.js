@@ -48,6 +48,9 @@ var defaultConfig = {
             },
             get scripts() {
                 return global.config.folders.release + '/' + global.config.filenames.release.scripts;
+            },
+            get index() {
+                return global.config.folders.release + '/index.html';
             }
         }
     },
@@ -85,6 +88,12 @@ var defaultConfig = {
     },
     minifyCss: {
         keepBreaks: false
+    },
+    minifyHtml: {
+        comments: true,
+        empty: true,
+        spare: true,
+        quotes: true
     },
     autoPrefixer: {
         browsers: ['last 2 versions'],

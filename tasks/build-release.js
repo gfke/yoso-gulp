@@ -7,7 +7,7 @@ module.exports = gulp.task('BuildRelease', ['LintScripts', 'LintStyles', 'UnitTe
     global.config.buildProcess.cacheKey = new Date().getTime();
 
     runsequence(
-       'ResolveJsAndCssDependencies',
+        ['ResolveJsAndCssDependencies','BuildIndex'],
         ['BuildReleaseScripts', 'BuildReleaseStyles']
     );
 });

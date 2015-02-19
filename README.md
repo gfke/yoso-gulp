@@ -43,3 +43,9 @@ After that, add the cache key to the filename and copy it to the app folder
 ### BuildReleaseScripts
 Minify CSS bundle and apply vendor prefixes
 After that, add the cache key to the filename and copy it to the app folder
+
+### BuildIndex
+This task copies the index.html file from the sources to the app folder
+and inserts the correct link to the JS and CSS files
+On ReleaseBuild it also minifies the HTML
+
