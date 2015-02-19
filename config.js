@@ -70,7 +70,7 @@ var defaultConfig = {
         };
     },
     sass: {
-        'sourcemap=none': true
+        sourceMap: false
     },
     buildProcess: {
         useTemplateCache: false

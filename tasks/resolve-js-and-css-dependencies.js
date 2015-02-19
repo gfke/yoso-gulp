@@ -1,6 +1,7 @@
 'use strict';
 
 var browserify = require('browserify');
+var extend = require('extend');
 var fs = require('fs');
 var gulp = require('gulp');
 var partialify = require('partialify');
@@ -35,9 +36,10 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function () {
      */
     function compileScss(src, file) {
         if (path.extname(file) === '.scss') {
-            return sass.renderSync({
-                data: src
-            });
+            var options = {data: src};
+            options = extend(options, global.config.sass);
+
+            return sass.renderSync(options);
         }
         return src;
     }
@@ -66,7 +68,6 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function () {
             .toString();
 
         saveStyleSheetToTemp(compiledDependenciesStyleSheet);
-        //done();
     }
 
     /**
