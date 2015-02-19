@@ -6,12 +6,12 @@ packages with [browserify](http://browserify.org/) and [rework](https://github.c
 
 ## Install
 ```bash
-$ npm install --save git@github.com:gfke/yoso-gulp.git
+$ npm install --save-dev gfke/yoso-gulp
 ```
 
 ## Usage
 ```bash
- gulp --develop (default) 
+ gulp (default) 
 ```
 
 ## Tasks
@@ -35,3 +35,6 @@ in this module (local settings are ignored) to ensure same sass style and qualit
 ### UnitTest
 This task runs your unit tests directly in Node using [Jasmine](http://jasmine.github.io/)
 No [karma](http://karma-runner.github.io) or [phantomJs](http://phantomjs.org/) necessary
+
+### MinifyScripts
+This task minifies all provided javascript files. 
