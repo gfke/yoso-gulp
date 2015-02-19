@@ -19,7 +19,7 @@ var source = require('vinyl-source-stream');
  *  CSS bundle
  *  If a style dependency is a SCSS file it will be compiled on the fly
  **/
-module.exports = gulp.task('ResolveJsAndCssDependencies', function () {
+module.exports = gulp.task('ResolveJsAndCssDependencies', function (done) {
     var allStyleDependencies = [];
     var importStatements = [];
 
@@ -77,6 +77,7 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function () {
             .toString();
 
         saveStyleSheetToTemp(compiledDependenciesStyleSheet);
+        done();
     }
 
     /**
