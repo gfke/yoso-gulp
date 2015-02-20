@@ -2,7 +2,6 @@
 var gulp        = require('gulp'),
     runsequence = require('run-sequence');
 
-
 function insertCacheKey(filename, cacheKey) {
     var tempArray = filename.split('.');
     tempArray.splice(tempArray.length - 1, 0, cacheKey);

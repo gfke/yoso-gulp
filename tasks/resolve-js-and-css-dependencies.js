@@ -13,7 +13,6 @@ var browserify = require('browserify'),
     source     = require('vinyl-source-stream'),
     watchify   = require('watchify');
 
-
 /**
  *  This task calls browserify to resolve all JS dependencies and compiles them into a release bundle
  *  While the packages are resolved, each package with a style defined in will be added to an temporary list
@@ -113,7 +112,6 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function (done) {
 
     /**
      * Tell the browserify bundler to bundle all dependencies
-     * @param b
      */
     function rebundle(b) {
         //When done with JS dependencies call the function to process CSS dependencies
