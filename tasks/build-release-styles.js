@@ -14,6 +14,6 @@ module.exports = gulp.task('BuildReleaseStyles', function () {
     return gulp.src(global.config.paths.temp.styles)
         .pipe(autoprefixer(global.config.autoPrefixer))
         .pipe(minifyCSS((global.config.minifyCss)))
-        .pipe(rename({suffix: '.' + global.config.buildProcess.cacheKey}))
+        .pipe(rename(global.config.filenames.release.styles))
         .pipe(gulp.dest(global.config.folders.release));
 });

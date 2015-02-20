@@ -44,7 +44,7 @@ var defaultConfig = {
         },
         release: {
             get styles() {
-                return global.config.folders.release + '/index.css';
+                return global.config.folders.release + + global.config.filenames.release.styles;
             },
             get scripts() {
                 return global.config.folders.release + '/' + global.config.filenames.release.scripts;
@@ -56,7 +56,8 @@ var defaultConfig = {
     },
     filenames: {
         release: {
-            scripts: 'index.js'
+            scripts: 'index.js',
+            styles: 'index.css'
         }
     },
     ports: {
