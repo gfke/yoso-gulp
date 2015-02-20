@@ -33,10 +33,10 @@ var defaultConfig = {
         },
         temp: {
             get styles() {
-                return global.config.folders.temp + '/index.css';
+                return global.config.folders.temp + '/' + global.config.filenames.temp.styles;
             },
             get scripts() {
-                return global.config.folders.temp + '/index.js';
+                return global.config.folders.temp + '/' + global.config.filenames.temp.scripts;
             },
             get index() {
                 return global.config.folders.temp + '/index.html';
@@ -44,7 +44,7 @@ var defaultConfig = {
         },
         release: {
             get styles() {
-                return global.config.folders.release + + global.config.filenames.release.styles;
+                return global.config.folders.release + '/' + global.config.filenames.release.styles;
             },
             get scripts() {
                 return global.config.folders.release + '/' + global.config.filenames.release.scripts;
@@ -52,15 +52,19 @@ var defaultConfig = {
             get index() {
                 return global.config.folders.release + '/index.html';
             },
-            get all(){
+            get all() {
                 return global.config.folders.release + '/index?(\.*).{js,css,html}';
             }
         }
     },
     filenames: {
+        temp: {
+            styles: 'index.css',
+            scripts: 'index.js'
+        },
         release: {
-            scripts: 'index.js',
-            styles: 'index.css'
+            styles: 'index.css',
+            scripts: 'index.js'
         }
     },
     ports: {

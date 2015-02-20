@@ -114,7 +114,7 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function (done) {
         .transform(partialify)
         //When done with JS dependencies call the function to process CSS dependencies
         .bundle(resolveCssDependencies)
-        .pipe(source(global.config.filenames.release.scripts))
+        .pipe(source(global.config.filenames.temp.scripts))
         .pipe(gulp.dest(global.config.folders.temp))
         .on('end', areWeDoneYet);
 });
