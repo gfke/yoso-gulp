@@ -51,6 +51,9 @@ var defaultConfig = {
             },
             get index() {
                 return global.config.folders.release + '/index.html';
+            },
+            get all(){
+                return global.config.folders.release + '/index?(\.*).{js,css,html}';
             }
         }
     },
@@ -117,7 +120,6 @@ var defaultConfig = {
     }
 };
 
-//TODO:Necessary? One may just overwrite settings after that
 //parts of the config may be defined in the directive gulpfile
 //and may overrides every setting
 global.config = global.config || {};
