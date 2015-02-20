@@ -67,10 +67,6 @@ var defaultConfig = {
             scripts: 'index.js'
         }
     },
-    ports: {
-        staticServer: 8080,
-        livereloadServer: 35729
-    },
     jasmine: {
         verbose: true,
         includeStackTrace: true
@@ -113,6 +109,12 @@ var defaultConfig = {
         cacheKey: 'dev'
     },
     serve: {
+        connect: {
+            port: 8080,
+            livereload: {
+                ports: 35729
+            }
+        },
         watchFiles: {
             get temp() {
                 return global.config.folders.temp + '/**/*.{js,css,html}';
