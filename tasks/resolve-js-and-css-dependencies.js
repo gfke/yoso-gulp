@@ -25,7 +25,16 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function (done) {
         importStatements = [],
         isRelease = global.config.buildProcess.isReleaseBuild,
         releaseConfig = global.config.browserify.release,
-        developConfig = global.config.browserify.develop;
+        developConfig = global.config.browserify.develop,
+        globalSassVariablesImport = getGlobalSassVariablesImport() + '\n';
+
+    /**
+     * Values for global variables must be present while rendering each SCSS file
+     * @returns {*}
+     */
+    function getGlobalSassVariablesImport() {
+        return createImportStatement('./' + global.config.folders.scss + '/' + global.config.filenames.scss.globalVariables)
+    }
 
     /**
      * Used to create a in memory stylesheet that only contains
@@ -42,7 +51,7 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function (done) {
     function compileScss(src, file) {
         if (path.extname(file) === '.scss') {
             var options = {
-                data: src,
+                data: globalSassVariablesImport + src,
                 includePaths: [path.dirname(file)]
             };
             options = extend(options, global.config.sass);
