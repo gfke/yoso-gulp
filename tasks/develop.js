@@ -6,7 +6,7 @@ module.exports = gulp.task('Develop', ['Clean', 'LintScripts', 'LintStyles', 'Un
     global.config.buildProcess.isReleaseBuild = false;
 
     runsequence(
-        ['ResolveJsAndCssDependencies','BuildIndex'],
+        ['BuildStyles','BuildIndex'],
         'serve'
     );
 });

@@ -22,7 +22,7 @@ module.exports = gulp.task('BuildRelease', ['Clean', 'LintScripts', 'LintStyles'
     global.config.filenames.release.styles = styleFileName;
 
     runsequence(
-        ['ResolveJsAndCssDependencies', 'BuildIndex'],
+        ['BuildStyles', 'BuildIndex'],
         ['BuildReleaseScripts', 'BuildReleaseStyles']
     );
 });
