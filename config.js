@@ -108,6 +108,15 @@ var defaultConfig = {
         isReleaseBuild: false,
         cacheKey: 'dev'
     },
+    browserify: {
+        develop: {
+            cache: {},
+            packageCache: {},
+            fullPaths: true,
+            debug: true
+        },
+        release: {}
+    },
     serve: {
         connect: {
             port: 8080,
