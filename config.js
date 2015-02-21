@@ -39,7 +39,7 @@ var defaultConfig = {
                 return global.config.folders.temp + '/index.js';
             },
             get index() {
-                return global.config.folders.temp + '/index.html';
+                return global.config.folders.temp + '/*.html';
             }
         },
         release: {
