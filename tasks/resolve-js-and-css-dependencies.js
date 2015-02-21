@@ -10,7 +10,8 @@ var browserify = require('browserify'),
     rework     = require('rework'),
     reworkNpm  = require('rework-npm'),
     sass       = require('node-sass'),
-    source     = require('vinyl-source-stream');
+    source     = require('vinyl-source-stream'),
+    watchify   = require('watchify');
 
 /**
  *  This task calls browserify to resolve all JS dependencies and compiles them into a release bundle
@@ -20,8 +21,20 @@ var browserify = require('browserify'),
  *  If a style dependency is a SCSS file it will be compiled on the fly
  **/
 module.exports = gulp.task('ResolveJsAndCssDependencies', function (done) {
-    var allStyleDependencies = [];
-    var importStatements = [];
+    var allStyleDependencies = [],
+        importStatements = [],
+        isRelease = global.config.buildProcess.isReleaseBuild,
+        releaseConfig = global.config.browserify.release,
+        developConfig = global.config.browserify.develop,
+        globalSassVariablesImport = getGlobalSassVariablesImport() + '\n';
+
+    /**
+     * Values for global variables must be present while rendering each SCSS file
+     * @returns {*}
+     */
+    function getGlobalSassVariablesImport() {
+        return createImportStatement('./' + global.config.folders.scss + '/' + global.config.filenames.scss.globalVariables)
+    }
 
     /**
      * Used to create a in memory stylesheet that only contains
@@ -38,7 +51,7 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function (done) {
     function compileScss(src, file) {
         if (path.extname(file) === '.scss') {
             var options = {
-                data: src,
+                data: globalSassVariablesImport + src,
                 includePaths: [path.dirname(file)]
             };
             options = extend(options, global.config.sass);
@@ -94,6 +107,7 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function (done) {
 
     var semaphoreCount = 0,
         semaphoreTarget = 2;
+
     /**
      * Semaphore function to check if all concurrent tasks
      * have been completed
@@ -105,16 +119,32 @@ module.exports = gulp.task('ResolveJsAndCssDependencies', function (done) {
         }
     }
 
-    //Call browserify to resolve all require statements
-    browserify()
+    /**
+     * Tell the browserify bundler to bundle all dependencies
+     */
+    function rebundle(b) {
+        //When done with JS dependencies call the function to process CSS dependencies
+        b.bundle(resolveCssDependencies)
+            .pipe(source(global.config.filenames.temp.scripts))
+            .pipe(gulp.dest(global.config.folders.temp))
+            .on('end', areWeDoneYet);
+    }
+
+    //Config browserify to resolve all require statements
+    var bundler = browserify(isRelease ? releaseConfig : developConfig)
         .on('package', gatherPackagesWithStyles)
         .add(global.config.paths.src.main)
         //Always apply partialify transform to enable requiring of templates
         //this must also be defined in package.json of the compiling module
-        .transform(partialify)
-        //When done with JS dependencies call the function to process CSS dependencies
-        .bundle(resolveCssDependencies)
-        .pipe(source(global.config.filenames.release.scripts))
-        .pipe(gulp.dest(global.config.folders.temp))
-        .on('end', areWeDoneYet);
+        .transform(partialify);
+
+    //If not release build append the watcher on the browserify bundler
+    if (isRelease === false) {
+        bundler = watchify(bundler)
+            .on('update', function () {
+                rebundle(bundler);
+            });
+    }
+
+    rebundle(bundler);
 });

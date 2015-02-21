@@ -33,10 +33,10 @@ var defaultConfig = {
         },
         temp: {
             get styles() {
-                return global.config.folders.temp + '/index.css';
+                return global.config.folders.temp + '/' + global.config.filenames.temp.styles;
             },
             get scripts() {
-                return global.config.folders.temp + '/index.js';
+                return global.config.folders.temp + '/' + global.config.filenames.temp.scripts;
             },
             get index() {
                 return global.config.folders.temp + '/*.html';
@@ -44,24 +44,31 @@ var defaultConfig = {
         },
         release: {
             get styles() {
-                return global.config.folders.release + '/index.css';
+                return global.config.folders.release + '/' + global.config.filenames.release.styles;
             },
             get scripts() {
                 return global.config.folders.release + '/' + global.config.filenames.release.scripts;
             },
             get index() {
                 return global.config.folders.release + '/index.html';
+            },
+            get all() {
+                return global.config.folders.release + '/index?(\.*).{js,css,html}';
             }
         }
     },
     filenames: {
+        scss:{
+          globalVariables: '_variables.scss'
+        },
+        temp: {
+            styles: 'index.css',
+            scripts: 'index.js'
+        },
         release: {
+            styles: 'index.css',
             scripts: 'index.js'
         }
-    },
-    ports: {
-        staticServer: 8080,
-        livereloadServer: 35729
     },
     jasmine: {
         verbose: true,
@@ -104,7 +111,22 @@ var defaultConfig = {
         isReleaseBuild: false,
         cacheKey: 'dev'
     },
+    browserify: {
+        develop: {
+            cache: {},
+            packageCache: {},
+            fullPaths: true,
+            debug: true
+        },
+        release: {}
+    },
     serve: {
+        connect: {
+            port: 8080,
+            livereload: {
+                ports: 35729
+            }
+        },
         watchFiles: {
             get temp() {
                 return global.config.folders.temp + '/**/*.{js,css,html}';
@@ -116,7 +138,6 @@ var defaultConfig = {
     }
 };
 
-//TODO:Necessary? One may just overwrite settings after that
 //parts of the config may be defined in the directive gulpfile
 //and may overrides every setting
 global.config = global.config || {};

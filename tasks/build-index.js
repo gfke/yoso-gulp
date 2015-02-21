@@ -13,20 +13,16 @@ var gulp       = require('gulp'),
 module.exports = gulp.task('BuildIndex', function () {
     var isRelease = global.config.buildProcess.isReleaseBuild;
 
-    return gulp.src(config.paths.src.index)
+    return gulp.src(global.config.paths.src.index)
         //Minify HTML
         .pipe(gulpif(isRelease,
             minifyHTML(global.config.minifyHtml)))
         //Insert link to bundled style sheet, either with or without cache key
-        .pipe(gulpif(isRelease,
-            replace('<!--styles-->', '<link href="' + config.filenames.release.styles + '" rel="stylesheet">'),
-            replace('<!--styles-->', '<link href="' + config.filenames.build.styles + '" rel="stylesheet">')
-        ))
+        .pipe(replace('<!--styles-->',
+            '<link href="' + global.config.filenames.release.styles + '" rel="stylesheet" />'))
         //Insert link to bundled scripts, either with or without cache key
-        .pipe(gulpif(isRelease,
-            replace('<!--scripts-->', '<script async src="' + config.filenames.release.scripts + '"></script>'),
-            replace('<!--scripts-->', '<script async src="' + config.filenames.build.scripts + '"></script>')
-        ))
+        .pipe(replace('<!--scripts-->',
+            '<script async src="' + global.config.filenames.release.scripts + '"></script>'))
         //copy to app folder
-        .pipe(gulp.dest(config.paths.release.index));
+        .pipe(gulp.dest(global.config.folders.release));
 });

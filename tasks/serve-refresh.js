@@ -4,9 +4,10 @@
  * Send reload signal to browser.
  */
 'use strict';
-var gulp     = require('gulp'),
-    connect  = require('gulp-connect');
+var gulp    = require('gulp'),
+    connect = require('gulp-connect');
 
 module.exports = gulp.task('serve-refresh', function () {
-    gulp.src( global.config.paths.temp.index ).pipe( connect.reload() );
+    gulp.src(global.config.paths.release.index)
+        .pipe(connect.reload());
 });
