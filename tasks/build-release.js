@@ -17,7 +17,7 @@ function insertCacheKey(filename, cacheKey) {
  * Set all config values necessary for build, create the cache key and update the filenames
  * and call 'BuildStyles', 'BuildIndex' and after that 'BuildReleaseScripts', 'BuildReleaseStyles'
  */
-module.exports = gulp.task('BuildRelease', ['Clean', 'LintScripts', 'LintStyles', 'UnitTest'], function () {
+module.exports = gulp.task('build-release', ['clean', 'lint-scripts', 'lint-styles', 'unit-test'], function () {
     var cacheKey = new Date().getTime(),
         scriptFileName = global.config.filenames.release.scripts,
         styleFileName = global.config.filenames.release.styles;
@@ -31,7 +31,7 @@ module.exports = gulp.task('BuildRelease', ['Clean', 'LintScripts', 'LintStyles'
     global.config.filenames.release.styles = styleFileName;
 
     runsequence(
-        ['BuildStyles', 'BuildIndex'],
-        ['BuildReleaseScripts', 'BuildReleaseStyles']
+        ['build-styles', 'build-index'],
+        ['build-release-scripts', 'build-release-styles']
     );
 });

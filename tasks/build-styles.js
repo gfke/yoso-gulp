@@ -14,7 +14,7 @@ function handleError(err) {
  * Compiles the application styles and concatenates them with the styles
  * previously build from the dependencies
  */
-module.exports = gulp.task('BuildStyles', ['ResolveJsAndCssDependencies'], function () {
+module.exports = gulp.task('build-styles', ['resolve-js-and-css-dependencies'], function () {
     var appStyles = gulp.src(global.config.paths.src.styles)
         .pipe(sass(global.config.sass).on('error', handleError));
 

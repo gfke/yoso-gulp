@@ -20,7 +20,7 @@ var browserify = require('browserify'),
  *  CSS bundle
  *  If a style dependency is a SCSS file it will be compiled on the fly
  **/
-module.exports = gulp.task('ResolveJsAndCssDependencies', function (done) {
+module.exports = gulp.task('resolve-js-and-css-dependencies', function (done) {
     var allStyleDependencies = [],
         importStatements = [],
         isRelease = global.config.buildProcess.isReleaseBuild,

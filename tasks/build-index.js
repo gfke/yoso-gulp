@@ -10,19 +10,19 @@ var gulp       = require('gulp'),
  * and inserts the correct link to the JS and CSS files
  * On ReleaseBuild it also minifies the HTML
  */
-module.exports = gulp.task('BuildIndex', function () {
+module.exports = gulp.task('build-index', function () {
     var isRelease = global.config.buildProcess.isReleaseBuild;
 
     return gulp.src(global.config.paths.src.index)
-        //Minify HTML
+        // Minify HTML
         .pipe(gulpif(isRelease,
             minifyHTML(global.config.minifyHtml)))
-        //Insert link to bundled style sheet, either with or without cache key
+        // Insert link to bundled style sheet, either with or without cache key
         .pipe(replace('<!--styles-->',
-            '<link href="' + global.config.filenames.release.styles + '" rel="stylesheet" />'))
-        //Insert link to bundled scripts, either with or without cache key
+            '<link href="' + global.config.filenames.release.styles + '" rel="stylesheet">'))
+        // Insert link to bundled scripts, either with or without cache key
         .pipe(replace('<!--scripts-->',
             '<script async src="' + global.config.filenames.release.scripts + '"></script>'))
-        //copy to app folder
-        .pipe(gulp.dest(global.config.folders.release));
+        // Copy to app folder
+        .pipe(gulp.dest(global.config.folders.temp));
 });

@@ -2,11 +2,11 @@
 var gulp        = require('gulp'),
     runsequence = require('run-sequence');
 
-module.exports = gulp.task('Develop', ['Clean', 'LintScripts', 'LintStyles', 'UnitTest'], function () {
+module.exports = gulp.task('develop', ['clean', 'lint-scripts', 'lint-styles', 'unit-test'], function () {
     global.config.buildProcess.isReleaseBuild = false;
 
     runsequence(
-        ['BuildStyles','BuildIndex'],
+        ['build-styles','build-index'],
         'serve'
     );
 });

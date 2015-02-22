@@ -21,4 +21,4 @@ global.config = {
 require('./config');
 require('./index');
 
-gulp.task('default', ['lint']);
+gulp.task('default', ['develop']);

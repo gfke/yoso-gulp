@@ -10,7 +10,7 @@ var gulp       = require('gulp'),
  * After that add the cache key to the filename
  * and copy it to the app folder
  */
-module.exports = gulp.task('BuildReleaseScripts', function () {
+module.exports = gulp.task('build-release-scripts', function () {
     return gulp.src(global.config.paths.temp.scripts)
         .pipe(ngAnnotate())
         .pipe(uglify((global.config.uglify)))

@@ -10,7 +10,7 @@ var gulp         = require('gulp'),
  * After that add the cache key to the filename
  * and copy it to the app folder
  */
-module.exports = gulp.task('BuildReleaseStyles', function () {
+module.exports = gulp.task('build-release-styles', function () {
     return gulp.src(global.config.paths.temp.styles)
         .pipe(autoprefixer(global.config.autoPrefixer))
         .pipe(minifyCSS((global.config.minifyCss)))
