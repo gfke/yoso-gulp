@@ -11,7 +11,7 @@ var defaultConfig = {
         gulpConfig: './node_modules/yoso-gulp/'
     },
     paths: {
-        src: {
+        source: {
             get index() {
                 return global.config.folders.source + '/index.html';
             },
