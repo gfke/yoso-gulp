@@ -5,10 +5,10 @@
  * and file types *.css, *.scss, *.js, *.html, *.json
  */
 'use strict';
-var gulp   = require('gulp'),
-    gutil  = require('gulp-util');
+var gulp         = require('gulp'),
+    gutil        = require('gulp-util');
 
-module.exports = gulp.task('http', ['http-server'], function () {
+module.exports = gulp.task('http', ['http-server', 'http-browser'], function () {
     /* Init path on watch for changes */
     var _watchPath = [ global.config.serve.watchFiles.static, global.config.serve.watchFiles.temp ];
 

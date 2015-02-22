@@ -1,6 +1,6 @@
 /*
- * serve-refresh.js
- * ----------------
+ * http-refresh.js
+ * ---------------
  * Send reload signal to browser.
  */
 'use strict';

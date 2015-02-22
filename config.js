@@ -5,6 +5,7 @@ var extend = require('extend');
 var defaultConfig = {
     folders: {
         source: './source',
+        static: './static',
         scss: './styles',
         temp: './.tmp',
         release: './app',
@@ -45,7 +46,7 @@ var defaultConfig = {
     },
     filenames: {
         scss:{
-          globalVariables: '_variables.scss'
+            globalVariables: '_variables.scss'
         },
         temp: {
             styles: 'index.css',
@@ -117,9 +118,13 @@ var defaultConfig = {
             get temp() {
                 return global.config.folders.temp + '/**/*.{js,css,html}';
             },
-            get release() {
+            get static() {
                 return global.config.folders.release + '/**/*.{js,html,css,svg}';
             }
+        },
+        browser: {
+            url: "http://localhost:8080"
+            //app: "firefox"
         }
     }
 };
