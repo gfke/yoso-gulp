@@ -7,6 +7,6 @@ var gulp    = require('gulp'),
  * No kharma or phantomJs necessary
  */
 module.exports = gulp.task('unit-test', function () {
-    return gulp.src(global.config.paths.src.tests)
+    return gulp.src(global.config.paths.source.tests)
         .pipe(jasmine(global.config.jasmine));
 });

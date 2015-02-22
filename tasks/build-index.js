@@ -13,7 +13,7 @@ var gulp       = require('gulp'),
 module.exports = gulp.task('build-index', function () {
     var isRelease = global.config.buildProcess.isReleaseBuild;
 
-    return gulp.src(global.config.paths.src.index)
+    return gulp.src(global.config.paths.source.index)
         // Minify HTML
         .pipe(gulpif(isRelease,
             minifyHTML(global.config.minifyHtml)))
@@ -23,6 +23,8 @@ module.exports = gulp.task('build-index', function () {
         // Insert link to bundled scripts, either with or without cache key
         .pipe(replace('<!--scripts-->',
             '<script async src="' + global.config.filenames.release.scripts + '"></script>'))
-        // Copy to app folder
-        .pipe(gulp.dest(global.config.folders.temp));
+        // Copy to app/temp folder
+        .pipe(gulp.dest(gulpif(isRelease,
+            global.config.folders.release,
+            global.config.folders.temp)));
 });

@@ -133,7 +133,7 @@ module.exports = gulp.task('resolve-js-and-css-dependencies', function (done) {
     //Config browserify to resolve all require statements
     var bundler = browserify(isRelease ? releaseConfig : developConfig)
         .on('package', gatherPackagesWithStyles)
-        .add(global.config.paths.src.main)
+        .add(global.config.paths.source.main)
         //Always apply partialify transform to enable requiring of templates
         //this must also be defined in package.json of the compiling module
         .transform(partialify);

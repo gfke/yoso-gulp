@@ -10,7 +10,7 @@ var gulp    = require('gulp'),
  * Uses a global lint config to evaluate errors
  */
 module.exports = gulp.task('lint-scripts', function () {
-    return gulp.src(global.config.paths.src.scripts)
+    return gulp.src(global.config.paths.source.scripts)
         .pipe(jshint(global.config.jsLint))
         .pipe(jscs(global.config.jsCs))
         .pipe(jshint.reporter(stylish));

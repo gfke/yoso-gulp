@@ -41,20 +41,6 @@ var defaultConfig = {
             get index() {
                 return global.config.folders.temp + '/*.html';
             }
-        },
-        release: {
-            get styles() {
-                return global.config.folders.release + '/' + global.config.filenames.release.styles;
-            },
-            get scripts() {
-                return global.config.folders.release + '/' + global.config.filenames.release.scripts;
-            },
-            get index() {
-                return global.config.folders.release + '/index.html';
-            },
-            get all() {
-                return global.config.folders.release + '/index?(\.*).{js,css,html}';
-            }
         }
     },
     filenames: {

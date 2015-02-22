@@ -7,6 +7,6 @@ module.exports = gulp.task('develop', ['clean', 'lint-scripts', 'lint-styles', '
 
     runsequence(
         ['build-styles','build-index'],
-        'serve'
+        'http'
     );
 });
