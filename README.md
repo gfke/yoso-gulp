@@ -3,6 +3,7 @@
 A build workflow using [gulp](http://gulpjs.com/) to include all JS and CSS dependencies as [NPM](https://www.npmjs.com/) 
 packages with [browserify](http://browserify.org/) and [rework](https://github.com/reworkcss/rework-npm).
 
+See [Wiki](https://github.com/gfke/yoso-gulp/wiki) for more details
 
 ## Install
 ```bash
@@ -13,37 +14,6 @@ $ npm install --save-dev gfke/yoso-gulp
 ```bash
  gulp develop (default) 
 ```
-
-## Folder Structure
-To use this workflows, the application must either be in a distinct folder structure
-or overwrite the default config the set all folders to the correct path.
-
-Default configuration uses following structure:
-.
-├── .tmp _Compiled source files from development build_
-├── api _Express server that will run the application on production environments_
-│   ├── config
-│   ├── models
-│   ├── modules
-│   ├── routes
-│   └── views
-├── app _Complete, compiled application_
-│   ├── css
-│   ├── doc
-│   └── js
-│       └── vendor
-├── source _Javascript source code_
-│   ├── app
-│   │   └── foo
-│   └── common
-├── static _Static files that will be server but not altered by the application_
-│   ├── css
-│   ├── doc
-│   ├── img
-│   ├── js
-│   │   └── vendor
-│   └── svg
-└── styles _SASS source files_
 
 ## Workflow Batches
 There are two main workflow batches that combine and orchestrate 
