@@ -12,18 +12,17 @@ $ npm install --save-dev gfke/yoso-gulp
 
 ## Usage
 ```bash
- gulp develop (default) 
+ gulp develop (default)  # Compile build for debugging / development 
+                           and start debugging server 
+```
+
+```bash
+ gulp build-release # Compile fully optimized build for production release
 ```
 
 ## Workflow Batches
 There are two main workflow batches that combine and orchestrate 
 the other individual task into the two most common workflows
-
-*develop* and *build-release*
-
-Both batches will always run all the code quality tasks before executing their
-normal workflow. Neither development nor building should be continued as long as
-any of those tasks yields any error.
 
 ### develop
 Cleans everything from previous development builds.
