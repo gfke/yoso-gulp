@@ -38,6 +38,10 @@ Builds all sources like the development workflow but additionally minifies all J
  and copies the minified version to the app folder, also renaming them to include the cache key.
 Finally copies all static files and html templates to the app folder making it ready to be deployed.
 
+### code-quality
+Runs all code quality tasks for checking code and style conventions and also runs all tests
+*This batch is the only one to be called in modules*
+
 ## Individual Tasks
 The other tasks are individual tasks, which normally do not need to be executed directly
 
