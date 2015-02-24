@@ -31,6 +31,11 @@ non-minimized version and adds watcher for file changes
 Creates a connect server with livereload to serve the current state of the application and all dependencies
 Opens your development browser to view the application
 
+### build-docs
+Parses all comments in the Javascript code using [JSdoc](http://usejsdoc.org/) and
+automagically creates a browseable Wiki on the Github repository of your project.
+Updates only the API part of the Wiki - all manually added documentation will stay untouched
+
 ### build-release
 Cleans everything from previous development and release builds
 Sets all config values necessary for build, creates the cache key.

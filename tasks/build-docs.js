@@ -1,7 +1,6 @@
 'use strict';
 
 var gulp   = require('gulp'),
-    run    = require('gulp-run'),
     wicked = require('wicked');
 
 module.exports = gulp.task('build-docs', function (done) {
