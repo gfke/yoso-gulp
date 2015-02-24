@@ -1,7 +1,11 @@
 'use strict';
 
-var run = require('gulp-run');
+var gulp   = require('gulp'),
+    run    = require('gulp-run'),
+    wicked = require('wicked');
 
-module.exports = gulp.task('clean', function () {
-    return run('npm wicked').exec();
+module.exports = gulp.task('build-docs', function (done) {
+    wicked({loglevel: 'info'}, ['--configure', __dirname + '/../jsdoc.json'], function () {
+        done();
+    })
 });
