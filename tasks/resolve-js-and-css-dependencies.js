@@ -5,7 +5,7 @@ var browserify = require('browserify'),
     fs         = require('fs'),
     gulp       = require('gulp'),
     mkdirp     = require('mkdirp'),
-    partialify = require('partialify'),
+    partialify = require('partialify/custom'),
     path       = require('path'),
     rework     = require('rework'),
     reworkNpm  = require('rework-npm'),
@@ -136,7 +136,8 @@ module.exports = gulp.task('resolve-js-and-css-dependencies', function (done) {
         .add(global.config.paths.source.main)
         //Always apply partialify transform to enable requiring of templates
         //this must also be defined in package.json of the compiling module
-        .transform(partialify);
+        //Also eneable the requiering of SVGs
+        .transform(partialify.alsoAllow('svg'));
 
     //If not release build append the watcher on the browserify bundler
     if (isRelease === false) {
