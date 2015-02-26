@@ -112,3 +112,17 @@ individual dependencies's style sheets.
 ### unit-test
 This task runs your unit tests directly in Node using [Jasmine](http://jasmine.github.io/)
 No [karma](http://karma-runner.github.io) or [phantomJs](http://phantomjs.org/) necessary
+
+
+## General Notes, Hints & Pitfalls
+This section aims to  list a few general advices on how to use the package and some pitfalls developers came across while working with this module.
+
+### Browserify Transforms
+When working with browserfiy you will most likely use one transform or another.
+If you use transforms in a module that you want to require in an app keep in mind that transforms 
+defined in the app will not be applied to any other module on the dependency graph (anything in the node_modules folder or in its subfolder) if it is not defined in its package.json.
+This is described [here](https://github.com/substack/node-browserify#browserifytransform) but will cause very nasty bugs if you don't mind it.
+
+Also the transform dependency (e.g. partialify) **must not** be present in the dependency module but only in the app itself. If the transform is applied to the submodule, the transform dependecy is resolved again, butwith the submodle as basepath therefore requiring another module as if required from your app. This will result in loosing all configuration you previously applied to this transform.
+
+**Remember:** Submodules must contain the transform configuration their package.json but must not contain the transform module as dependcy itself.
