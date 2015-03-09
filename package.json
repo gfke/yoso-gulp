@@ -2,8 +2,8 @@
   "name": "yoso-gulp",
   "description": "A build workflow using gulp to include all JS and CSS dependencies as NPM packages with browserify and rework",
   "version": "0.0.1",
-  "homepage": "https://github.com/gfke/yoso-gulp",
-  "bugs": "https://github.com/gfke/yoso-gulp/issues",
+  "homepage": "https://github.com/doroppu/yoso-gulp",
+  "bugs": "https://github.com/doroppu/yoso-gulp/issues",
   "license": "none",
   "author": {
     "name": "Lukas Zech",
@@ -19,7 +19,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/gfke/yoso-gulp"
+    "url": "https://github.com/doroppu/yoso-gulp"
   },
   "engines": {
     "node": ">=0.10.0"
