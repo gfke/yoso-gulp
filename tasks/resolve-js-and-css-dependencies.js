@@ -33,7 +33,7 @@ module.exports = gulp.task('resolve-js-and-css-dependencies', function (done) {
      * @returns {*}
      */
     function getGlobalSassImports() {
-        return fs.readFileSync('./' + global.config.folders.scss + '/' + global.config.filenames.scss.globalVariables);
+        return fs.readFileSync('./' + global.config.folders.scss + '/' + global.config.filenames.scss.globalImports);
     }
 
     /**
@@ -95,9 +95,8 @@ module.exports = gulp.task('resolve-js-and-css-dependencies', function (done) {
         }
 
         var inMemoryStyleSheetWithDependencies = importStatements.join(''),
-            globalImports = getGlobalSassImports;
+            globalImports = getGlobalSassImports();
 
-        inMemoryStyleSheetWithDependencies += '\n';
         inMemoryStyleSheetWithDependencies += globalImports;
 
         var compiledDependenciesStyleSheet = rework(inMemoryStyleSheetWithDependencies)
