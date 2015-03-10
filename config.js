@@ -120,6 +120,9 @@ var defaultConfig = {
             },
             get static() {
                 return global.config.folders.release + '/**/*.{js,html,css,svg}';
+            },
+            get styles() {
+                return global.config.folders.styles + '/**/*.{css,scss}';
             }
         },
         browser: {

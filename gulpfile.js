@@ -7,7 +7,13 @@ global.config = {
         gulpConfig: ''
     },
     paths: {
-        src: {
+        source: {
+            get tests() {
+                return '';
+            },
+            get styles() {
+                return '';
+            },
             get scripts() {
                 return [
                     'tasks/**/*.js',

@@ -15,6 +15,8 @@ module.exports = gulp.task('http', ['http-server', 'http-browser'], function () 
     /* Create gulp watcher */
     var _watcher = gulp.watch(_watchPath, ['http-refresh']);
 
+    gulp.watch(global.config.serve.watchFiles.styles, ['resolve-js-and-css-dependencies']);
+
     /* catch changes on gulp watcher */
     _watcher.on('change', function (event) {
         gutil.log(gutil.colors.green('File ' + event.path + ' was ' + event.type + ', running tasks...'));
