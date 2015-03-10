@@ -29,6 +29,14 @@ module.exports = gulp.task('resolve-js-and-css-dependencies', function (done) {
         globalSassVariablesImport;
 
     /**
+     * Get global style imports that are not part of a module that is required via javascript
+     * @returns {*}
+     */
+    function getGlobalSassImports() {
+        return fs.readFileSync('./' + global.config.folders.scss + '/' + global.config.filenames.scss.globalVariables);
+    }
+
+    /**
      * Values for global variables must be present while rendering each SCSS file
      * @returns {*}
      */
@@ -76,6 +84,7 @@ module.exports = gulp.task('resolve-js-and-css-dependencies', function (done) {
     /**
      * After browserify gathered the styles from all packages,
      * rework will fetch all styles and combine them in one stylesheet
+     * Attach the manually defined imports from the global import style sheet
      * Then writes that to the temp folder and signals gulp that the task is done
      * This functions also looks for errors on browserify bundle events and throws them
      * as they would be suppressed elsewise
@@ -85,7 +94,11 @@ module.exports = gulp.task('resolve-js-and-css-dependencies', function (done) {
             throw error;
         }
 
-        var inMemoryStyleSheetWithDependencies = importStatements.join('');
+        var inMemoryStyleSheetWithDependencies = importStatements.join(''),
+            globalImports = getGlobalSassImports;
+
+        inMemoryStyleSheetWithDependencies += '\n';
+        inMemoryStyleSheetWithDependencies += globalImports;
 
         var compiledDependenciesStyleSheet = rework(inMemoryStyleSheetWithDependencies)
             .use(reworkNpm({prefilter: compileScss}))

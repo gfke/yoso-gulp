@@ -46,7 +46,8 @@ var defaultConfig = {
     },
     filenames: {
         scss:{
-            globalVariables: '_variables.scss'
+            globalVariables: '_variables.scss',
+            globalImports: '_imports.scss'
         },
         temp: {
             styles: 'index.css',
