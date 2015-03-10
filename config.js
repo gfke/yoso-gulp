@@ -122,7 +122,7 @@ var defaultConfig = {
                 return global.config.folders.release + '/**/*.{js,html,css,svg}';
             },
             get styles() {
-                return global.config.folders.styles + '/**/*.{css,scss}';
+                return global.config.folders.scss + '/**/*.{css,scss}';
             }
         },
         browser: {
