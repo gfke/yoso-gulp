@@ -26,15 +26,17 @@ module.exports = gulp.task('resolve-js-and-css-dependencies', function (done) {
         isRelease = global.config.buildProcess.isReleaseBuild,
         releaseConfig = global.config.browserify.release,
         developConfig = global.config.browserify.develop,
-        globalSassVariablesImport = getGlobalSassVariablesImport() + '\n';
+        globalSassVariablesImport;
 
     /**
      * Values for global variables must be present while rendering each SCSS file
      * @returns {*}
      */
     function getGlobalSassVariablesImport() {
-        return createImportStatement('./' + global.config.folders.scss + '/' + global.config.filenames.scss.globalVariables)
+        return createImportStatement('./' + global.config.folders.scss + '/' + global.config.filenames.scss.globalVariables);
     }
+
+    globalSassVariablesImport = getGlobalSassVariablesImport() + '\n';
 
     /**
      * Used to create a in memory stylesheet that only contains

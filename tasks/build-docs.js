@@ -6,5 +6,5 @@ var gulp   = require('gulp'),
 module.exports = gulp.task('build-docs', function (done) {
     wicked({loglevel: 'info'}, ['--configure', __dirname + '/../jsdoc.json'], function () {
         done();
-    })
+    });
 });

@@ -9,10 +9,10 @@ global.config = {
     paths: {
         source: {
             get tests() {
-                return '';
+                return 'none';
             },
             get styles() {
-                return '';
+                return 'none';
             },
             get scripts() {
                 return [

@@ -22,6 +22,6 @@ module.exports = gulp.task('build-styles', ['resolve-js-and-css-dependencies'], 
 
     return merge(appStyles, dependencyStyles)
         .pipe(concat(global.config.filenames.temp.styles))
-        .pipe(gulp.dest(config.folders.temp));
+        .pipe(gulp.dest(global.config.folders.temp));
 
 });

@@ -5,8 +5,7 @@
  */
 'use strict';
 var gulp         = require('gulp'),
-    connect      = require('gulp-connect'),
-    notifyErrors = require('../utils/error-notifier');
+    connect      = require('gulp-connect');
 
 gulp.task('http-server', function () {
     /* Init path var http server have to serve */

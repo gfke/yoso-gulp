@@ -126,8 +126,8 @@ var defaultConfig = {
             }
         },
         browser: {
-            url: "http://localhost:8080"
-            //app: "firefox"
+            url: 'http://localhost:8080'
+            //app: 'firefox'
         }
     }
 };
