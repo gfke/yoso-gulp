@@ -16,6 +16,7 @@ module.exports = gulp.task('http', ['http-server', 'http-browser'], function () 
     var _watcher = gulp.watch(_watchPath, ['http-refresh']);
 
     gulp.watch(global.config.serve.watchFiles.styles, ['build-styles']);
+    gulp.watch(global.config.serve.watchFiles.index, ['build-index']);
 
     /* catch changes on gulp watcher */
     _watcher.on('change', function (event) {

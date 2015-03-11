@@ -124,6 +124,9 @@ var defaultConfig = {
             },
             get styles() {
                 return global.config.folders.scss + '/**/*.{css,scss}';
+            },
+            get index() {
+                return global.config.folders.source + '/index.html';
             }
         },
         browser: {
