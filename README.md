@@ -9,6 +9,10 @@ See [Wiki](https://github.com/gfke/yoso-gulp/wiki) for more details
 ```bash
 $ npm install --save-dev gfke/yoso-gulp
 ```
+The SCSS linting relies on a ruby gem which needs to be installed
+```bash
+$ sudo gem install scss-lint
+```
 
 ## Usage
 ```bash
