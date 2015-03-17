@@ -68,22 +68,22 @@ Copies all static files and all HTML templates to the app folder
 ### build-release-http
 
 ### build-release-scripts
-Minify browserify bundle and templateCache
+Minify webpack bundle and templateCache
 After that, add the cache key to the filename and copy it to the app folder
 
-### build-release-scripts
-Minify CSS bundle and apply vendor prefixes
+### build-release-styles
+Minify CSS bundle 
 After that, add the cache key to the filename and copy it to the app folder
 
 ### build-index
 This task copies the index.html file from the sources to the app folder
-and inserts the correct link to the JS and CSS files
-On ReleaseBuild it also minifies the HTML
+and inserts the correct link to the JS files
+On ReleaseBuild it also minifies the HTML and adds the cache key to the filename
 
-### build-styles
-Compiles the application styles and concatenates them with the styles
-previously build from the dependencies
-Has a hard dependency on the *resolve-js-and-css-dependencies* task
+### build-webpack
+Calls [webpack](http://webpack.github.io/) to resolve all require calls and create a Javascript bundle
+that will hold all Javascript modules, their styles and their SVGs.
+All dependencies are resolved in this bundle.
 
 ### clean
 Deletes the temporary folder, cleaning all files from development builds
@@ -107,16 +107,6 @@ in this module (local settings are ignored) to ensure same code style and qualit
 ### lint-styles
 This task runs [scss-lint](https://github.com/causes/scss-lint) with the configurations stored
 in this module (local settings are ignored) to ensure same sass style and quality on all modules
-
-### resolve-js-and-css-dependencies
-This task calls browserify to resolve all JS dependencies and compiles them into a release bundle
-While the packages are resolved, each package with a style defined in will be added to an temporary list
-of CSS dependencies which will then be resolved by rework to combine all CSS files from all packages into one
-CSS bundle
-If a style dependency is a SCSS file it will be compiled to CSS on the fly. If doing so it will also load
-the globalVariables SCSS file and import the variable values in there to overwrite all all values in
-individual dependencies's style sheets.
-*Works only in the app - won't do anything in other projects like directives*
 
 ### unit-test
 This task runs your unit tests directly in Node using [Jasmine](http://jasmine.github.io/)

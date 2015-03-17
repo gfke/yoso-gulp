@@ -1,43 +1,61 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require("path");
+const path = require('path'),
+qs         = require('querystring');
 
+require('./config.js');
 
-const config = {
-    context: __dirname + '/app',
-    entry: __dirname + '/source/index.js',
-    output: {
-        path: __dirname + '/app',
-        filename: '[chunkhash].js'
-    },
-    /*plugins: [
-        new HtmlWebpackPlugin({
-            filename: 'index.html',
-            template: 'source/index.html'
-        })
-    ],*/
+const pathToAppRoot = '../../',
+webPackConfig       = {
+    context: __dirname,
+    entry: path.join(pathToAppRoot, global.config.paths.source.main),
+    //NOTE: There is no output defined as the result is passed as stream to the gulp task
     module: {
         loaders: [
-           /* {
-                test: /\.js$/,
-                loader: 'babel'
+            /* {
+             test: /\.js$/,
+             loader: 'babel'
+             }, {
+             test: /\.ts$/,
+             loader: 'babel!typescript'
+             }, {
+             test: /\.(jpe?g|png|gif|svg)$/i,
+             loaders: [
+             'file',
+             'image'
+             ],
+             query: {
+             svgoPlugins: [
+             {removeTitle: true},
+             {convertColors: {shorthex: false}},
+             {convertPathData: false}
+             ]
+             }
+             },*/{
+                test: /\.(svg)$/,
+                loader: 'raw-loader'
             }, {
-                test: /\.ts$/,
-                loader: 'babel!typescript'
-            },*/ {
+                test: /\.json$/,
+                loader: 'json'
+            }, {
                 test: /\.html$/,
                 loader: 'raw'
             }, {
                 test: /\.scss$/,
                 loaders: [
-                    "style",
-                    "css",
-                    "autoprefixer?browsers=last 2 version",
-                    "sass?includePaths[]=" + path.resolve(__dirname, "./source"),
+                    'style',
+                    'css',
+                    'autoprefixer?' + qs.stringify(global.config.autoPrefixer),
+                    (
+                    'sass?' +
+                    'includePaths[]=' + path.join(pathToAppRoot, global.config.paths.source.styles) +
+                    '&' + qs.stringify(global.config.autoPrefixer)
+                    )
                 ]
             }
         ]
+    },
+    resolveLoader: {
+        root: path.join(__dirname, 'node_modules')
     }
-
 };
 
-module.exports = config;
+module.exports = webPackConfig;

@@ -14,7 +14,7 @@ var defaultConfig = {
     paths: {
         source: {
             get index() {
-                return global.config.folders.source + '/index.html';
+                return global.config.folders.source + '/' + global.config.filenames.html.index;
             },
             get scripts() {
                 return global.config.folders.source + '/**/*.js';
@@ -45,6 +45,9 @@ var defaultConfig = {
         }
     },
     filenames: {
+        html: {
+            index: 'index.html'
+        },
         scss: {
             globalVariables: '_variables.scss',
             globalImports: '_imports.scss'

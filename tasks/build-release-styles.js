@@ -2,8 +2,7 @@
 
 var gulp         = require('gulp'),
     rename       = require('gulp-rename'),
-    minifyCSS    = require('gulp-minify-css'),
-    autoprefixer = require('gulp-autoprefixer');
+    minifyCSS    = require('gulp-minify-css');
 
 /**
  * Minify CSS bundle and apply vendor prefixes
@@ -12,7 +11,6 @@ var gulp         = require('gulp'),
  */
 module.exports = gulp.task('build-release-styles', function () {
     return gulp.src(global.config.paths.temp.styles)
-        .pipe(autoprefixer(global.config.autoPrefixer))
         .pipe(minifyCSS((global.config.minifyCss)))
         .pipe(rename(global.config.filenames.release.styles))
         .pipe(gulp.dest(global.config.folders.release));

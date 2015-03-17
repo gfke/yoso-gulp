@@ -5,7 +5,7 @@ var path    = require('path'),
     webpack = require('gulp-webpack-build');
 
 var config          = global.config,
-    dest            = config.folders.release,
+    dest            = config.folders.temp,
     webpackOptions  = config.buildProcess.isReleaseBuild ? config.webpack.release : config.webpack.develop,
     webpackConfig   = {
         useMemoryFs: true,
