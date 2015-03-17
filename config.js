@@ -45,7 +45,7 @@ var defaultConfig = {
         }
     },
     filenames: {
-        scss:{
+        scss: {
             globalVariables: '_variables.scss',
             globalImports: '_imports.scss'
         },
@@ -98,6 +98,14 @@ var defaultConfig = {
         useTemplateCache: false,
         isReleaseBuild: false,
         cacheKey: 'dev'
+    },
+    webpack: {
+        develop: {
+            debug: true,
+            devtool: '#source-map',
+            watchDelay: 200
+        },
+        release: {}
     },
     browserify: {
         develop: {

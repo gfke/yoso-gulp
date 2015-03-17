@@ -2,9 +2,9 @@
   "name": "yoso-gulp",
   "description": "A build workflow using gulp to include all JS and CSS dependencies as NPM packages with browserify and rework",
   "version": "1.0.1",
-  "repository" :  { 
-  	"type" : "git",
-    "url" : "http://github.com/doroppu/yoso-gulp.git"
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/doroppu/yoso-gulp.git"
   },
   "homepage": "https://github.com/doroppu/yoso-gulp",
   "bugs": "https://github.com/doroppu/yoso-gulp/issues",
@@ -25,7 +25,6 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "browserify": "^9.0.3",
     "del": "^1.1.1",
     "extend": "^2.0.0",
     "gulp": "^3.8.11",
@@ -51,13 +50,21 @@
     "merge-stream": "^0.1.7",
     "mkdirp": "^0.5.0",
     "node-sass": "^2.0.1",
-    "partialify": "^3.1.3",
     "require-dir": "^0.1.0",
     "rework": "^1.0.1",
     "rework-npm": "^1.0.0",
     "run-sequence": "^1.0.2",
     "vinyl-source-stream": "^1.0.0",
-    "watchify": "^2.3.0",
-    "wicked": "^0.3.1"
+    "wicked": "^0.3.1",
+    "css-loader": "^0.9.1",
+    "autoprefixer-loader": "^1.2.0",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^0.5.0",
+    "style-loader": "^0.8.3",
+    "webpack": "^1.7.3",
+    "webpack-dev-server": "^1.7.0"
+  },
+  "devDependencies": {
+    "gulp-webpack-build": "^0.6.0"
   }
 }
