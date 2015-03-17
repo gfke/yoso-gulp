@@ -7,7 +7,10 @@ const pathToAppRoot = '../../',
 webPackConfig       = {
     context: __dirname,
     entry: path.join(pathToAppRoot, global.config.paths.source.main),
-    //NOTE: There is no output defined as the result is passed as stream to the gulp task
+    output: {
+        //NOTE: There is no output path defined as the result is passed as stream to the gulp.dest task
+        filename: global.config.filenames.temp.scripts
+    },
     module: {
         loaders: [
             /* {
