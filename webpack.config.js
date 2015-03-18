@@ -2,7 +2,7 @@ const path = require('path'),
 qs         = require('querystring');
 
 const pathToAppRoot = '../../',
-scssVariablesPath = path.join(pathToAppRoot, global.config.folders.scss, '_variables.scs'),
+scssVariablesPath   = path.join(pathToAppRoot, global.config.folders.scss, '_variables.scs'),
 webPackConfig       = {
     context: __dirname,
     entry: path.join(pathToAppRoot, global.config.paths.source.main),
@@ -12,26 +12,13 @@ webPackConfig       = {
     },
     module: {
         loaders: [
-            /* {
-             test: /\.js$/,
-             loader: 'babel'
-             }, {
-             test: /\.ts$/,
-             loader: 'babel!typescript'
-             }, {
-             test: /\.(jpe?g|png|gif|svg)$/i,
-             loaders: [
-             'file',
-             'image'
-             ],
-             query: {
-             svgoPlugins: [
-             {removeTitle: true},
-             {convertColors: {shorthex: false}},
-             {convertPathData: false}
-             ]
-             }
-             },*/{
+            {
+                test: /\.es6\.js$/,
+                loader: 'babel'
+            }, {
+                test: /\.ts$/,
+                loader: 'babel!typescript'
+            }, {
                 test: /\.(svg)$/,
                 loader: 'raw-loader'
             }, {
@@ -46,12 +33,8 @@ webPackConfig       = {
                     'style',
                     'css',
                     'autoprefixer?' + qs.stringify(global.config.autoPrefixer),
-                    (
-                    'sass?' +
-                    //TODO: Implement way to inject multiple global sass files like susy
-                    'includePaths[]=' + scssVariablesPath +
-                    '&' + qs.stringify(global.config.sass)
-                    )
+                    'sass?' + qs.stringify(global.config.sass)
+
                 ]
             }
         ]
