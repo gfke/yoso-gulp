@@ -1,7 +1,7 @@
 # yoso-gulp
 
 A build workflow using [gulp](http://gulpjs.com/) to include all JS and CSS dependencies as [NPM](https://www.npmjs.com/) 
-packages with [browserify](http://browserify.org/) and [rework](https://github.com/reworkcss/rework-npm).
+packages with [webpack](http://webpack.github.io/).
 
 See [Wiki](https://github.com/gfke/yoso-gulp/wiki) for more details
 
@@ -17,7 +17,7 @@ $ sudo gem install scss-lint
 ## Usage
 ```bash
  gulp develop (default)  # Compile build for debugging / development 
-                           and start debugging server 
+                           and start debugging server / refreshes on every code change
 ```
 
 ```bash
