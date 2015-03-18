@@ -6,7 +6,7 @@ module.exports = gulp.task('develop', ['clean', 'lint-scripts', 'lint-styles', '
     global.config.buildProcess.isReleaseBuild = false;
 
     runsequence(
-        ['build-webpack','build-index'],
+        ['build-develop'],
         'http'
     );
 });

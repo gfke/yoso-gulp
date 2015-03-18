@@ -1,15 +1,13 @@
 const path = require('path'),
 qs         = require('querystring');
 
-require('./config.js');
-
-const pathToAppRoot = '../../',
+const pathToAppRoot = '../',
 webPackConfig       = {
     context: __dirname,
     entry: path.join(pathToAppRoot, global.config.paths.source.main),
     output: {
-        //NOTE: There is no output path defined as the result is passed as stream to the gulp.dest task
-        filename: global.config.filenames.temp.scripts
+        path: path.join(__dirname, pathToAppRoot + config.folders.temp),
+        filename: global.config.filenames.release.scripts
     },
     module: {
         loaders: [
