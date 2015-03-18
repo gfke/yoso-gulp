@@ -1,3 +1,7 @@
+# 2.0.0 (2015-03-18)
+
+- Replace browerify with webpack
+
 # 1.0.1 (2015-03-16)
 
 - Move autoprefixer from release styles to develop styles
