@@ -9,18 +9,25 @@ var gulp  = require('gulp'),
     gutil = require('gulp-util');
 
 module.exports = gulp.task('http', ['http-server', 'http-browser'], function () {
-    /* Init path on watch for changes */
-    var _watchPath = [
-        global.config.serve.watchFiles.static,
-        global.config.serve.watchFiles.temp
-    ];
 
-    /* Create gulp watcher */
-    var _watcher = gulp.watch(_watchPath, ['build-develop'], function () {
-        gulp.run('http-refresh');
-    });
-    /* catch changes on gulp watcher */
-    _watcher.on('change', function (event) {
+    var logFunction = function (event) {
         gutil.log(gutil.colors.green('File ' + event.path + ' was ' + event.type + ', running tasks...'));
-    });
+    };
+
+    /* Create gulp watcher for static app files*/
+    gulp.watch(global.config.serve.watchFiles.static, [], function () {
+        gulp.run('http-refresh');
+    }).on('change', logFunction);
+
+    /* Create gulp watcher for the index.html*/
+    gulp.watch(global.config.serve.watchFiles.index, ['build-index'], function () {
+        gulp.run('http-refresh');
+    }).on('change', logFunction);
+
+    /* Create gulp watcher for files that need to be compiled in the webpack bundle*/
+    /*
+    gulp.watch(global.config.serve.watchFiles, ['build-webpack'], function () {
+        gulp.run('http-refresh');
+    }).on('change', logFunction);
+    */
 });

@@ -11,17 +11,35 @@ var isRelease = global.config.buildProcess.isReleaseBuild;
 extend(webpackConfig, isRelease ? global.config.webpack.release : global.config.webpack.develop);
 
 // create a single instance of the compiler to allow caching
-var webPackCompiler = webpack(webpackConfig);
-
-gulp.task('webpack-build', function (callback) {
-    // run webpack
-    webPackCompiler.run(function (err, stats) {
+var webPackCompiler   = webpack(webpackConfig),
+    initialWatchBuild = true,
+    buildHandler      = function (err, stats) {
         if (err) {
-            throw new gutil.PluginError('webpack-build', err);
+            throw new gutil.PluginError('build-webpack', err);
         }
-        gutil.log('[webpack-build]', stats.toString({
+        gutil.log('[build-webpack]', stats.toString({
             colors: true
         }));
-        callback();
-    });
+    };
+
+gulp.task('build-webpack', function (callback) {
+    if (isRelease) {
+        // run webpack
+        webPackCompiler.run(function (err, stats) {
+            buildHandler(err, stats);
+            callback();
+        });
+    } else {
+        // watch webpack
+        var watcher = webPackCompiler.watch(global.config.webpack.watchDelay, function (err, stats) {
+            buildHandler(err, stats);
+            if (initialWatchBuild) {
+                callback();
+            } else {
+                gulp.start('http-refresh');
+            }
+            initialWatchBuild = false;
+        });
+    }
+
 });
