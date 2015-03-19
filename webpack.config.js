@@ -11,6 +11,12 @@ webPackConfig       = {
         filename: global.config.filenames.release.scripts
     },
     module: {
+        noParse: [
+            /[\/\\]angular\.js$/,
+            /[\/\\]angular-ui-router\.js$/,
+            /[\/\\]angular-translate\.js$/,
+            /[\/\\]TweenMax\.js$/,
+        ],
         loaders: [
             {
                 test: /\.es6\.js$/,
