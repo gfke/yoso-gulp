@@ -1,3 +1,7 @@
+# 2.1.0 (2015-03-19)
+
+- Enable ES6 transpiling
+
 # 2.0.0 (2015-03-18)
 
 - Replace browerify with webpack

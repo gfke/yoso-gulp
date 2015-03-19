@@ -14,8 +14,7 @@ webPackConfig       = {
         noParse: [
             /[\/\\]angular\.js$/,
             /[\/\\]angular-ui-router\.js$/,
-            /[\/\\]angular-translate\.js$/,
-            /[\/\\]TweenMax\.js$/,
+            /[\/\\]angular-translate\.js$/
         ],
         loaders: [
             {

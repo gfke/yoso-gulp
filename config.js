@@ -20,7 +20,7 @@ var defaultConfig = {
                 return global.config.folders.source + '/**/*.js';
             },
             get main() {
-                return global.config.folders.source + '/index.js';
+                return global.config.folders.source + '/' + global.config.filenames.main.index;
             },
             get tests() {
                 return global.config.folders.source + '/**/*.spec.js';
@@ -45,6 +45,9 @@ var defaultConfig = {
         }
     },
     filenames: {
+        main: {
+            scripts: 'index.js'
+        },
         html: {
             index: 'index.html'
         },
@@ -70,6 +73,7 @@ var defaultConfig = {
     },
     get jsCs() {
         return {
+            esnext: true,
             configPath: global.config.folders.gulpConfig + '.jscsrc'
         };
     },
@@ -150,4 +154,4 @@ var defaultConfig = {
 //parts of the config may be defined in the directive gulpfile
 //and may overrides every setting
 global.config = global.config || {};
-global.config = extend(defaultConfig, global.config);
+global.config = extend(true, defaultConfig, global.config);
