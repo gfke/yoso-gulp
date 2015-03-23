@@ -7,8 +7,8 @@ webPackConfig = {
     context: __dirname,
     entry: path.join(pathToAppRoot, global.config.paths.source.main),
     output: {
-        path: path.join(__dirname, pathToAppRoot + config.folders.temp),
-        filename: global.config.filenames.release.scripts
+        path: path.join(__dirname, pathToAppRoot + global.config.folders.temp),
+        filename: global.config.filenames.temp.scripts
     },
     plugins: [
         new webpack.NormalModuleReplacementPlugin(/config.environment.json/, './' + global.config.filenames.config)
