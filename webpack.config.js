@@ -1,15 +1,18 @@
 const path = require('path'),
-qs         = require('querystring');
+qs         = require('querystring'),
+webpack    = require('webpack');
 
 const pathToAppRoot = '../../',
-scssVariablesPath   = path.join(pathToAppRoot, global.config.folders.scss, '_variables.scs'),
-webPackConfig       = {
+webPackConfig = {
     context: __dirname,
     entry: path.join(pathToAppRoot, global.config.paths.source.main),
     output: {
         path: path.join(__dirname, pathToAppRoot + config.folders.temp),
         filename: global.config.filenames.release.scripts
     },
+    plugins: [
+        new webpack.NormalModuleReplacementPlugin(/config.environment.json/, './' + global.config.filenames.config)
+    ],
     module: {
         noParse: [
             /[\/\\]angular\.js$/,

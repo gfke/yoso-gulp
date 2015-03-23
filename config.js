@@ -62,6 +62,10 @@ var defaultConfig = {
         release: {
             styles: 'index.css',
             scripts: 'index.js'
+        },
+        get config() {
+            console.log(global.config.buildProcess.cacheKey);
+            return 'config.{environment}.json'.replace('{environment}', global.config.buildProcess.environment);
         }
     },
     jasmine: {
@@ -104,15 +108,15 @@ var defaultConfig = {
     buildProcess: {
         useTemplateCache: false,
         isReleaseBuild: false,
-        cacheKey: 'dev'
+        cacheKey: 'dev',
+        environment: 'develop'
     },
     webpack: {
         develop: {
             debug: true,
             devtool: '#source-map',
             watchDelay: 200
-        },
-        release: {}
+        }
     },
     browserify: {
         develop: {
