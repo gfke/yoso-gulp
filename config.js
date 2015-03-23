@@ -13,23 +13,24 @@ var defaultConfig = {
     },
     paths: {
         source: {
+            a: {},
             get index() {
                 return global.config.folders.source + '/' + global.config.filenames.html.index;
             },
             get scripts() {
-                return global.config.folders.source + '/**/*.js';
+                return global.config.folders.source + '/' + global.config.filenames.patterns.scripts;
             },
             get main() {
                 return global.config.folders.source + '/' + global.config.filenames.main.index;
             },
             get tests() {
-                return global.config.folders.source + '/**/*.spec.js';
+                return global.config.folders.source + '/' + global.config.filenames.patterns.tests;
             },
             get styles() {
-                return global.config.folders.scss + '/**/*.scss';
+                return global.config.folders.scss + '/' + global.config.filenames.patterns.styles;
             },
             get templates() {
-                return global.config.folders.source + '/**/*.html';
+                return global.config.folders.source + '/' + global.config.filenames.patterns.templates;
             }
         },
         temp: {
@@ -63,8 +64,13 @@ var defaultConfig = {
             styles: 'index.css',
             scripts: 'index.js'
         },
+        patterns: {
+            scripts: '/**/*.js',
+            styles: '/**/*.scss',
+            tests: '/**/*.spec.js',
+            templates: '/**/*.html'
+        },
         get config() {
-            console.log(global.config.buildProcess.cacheKey);
             return 'config.{environment}.json'.replace('{environment}', global.config.buildProcess.environment);
         }
     },

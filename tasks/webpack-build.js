@@ -1,3 +1,5 @@
+'use strict';
+
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var extend = require('extend');
@@ -31,7 +33,7 @@ gulp.task('build-webpack', function (callback) {
         });
     } else {
         // watch webpack
-        var watcher = webPackCompiler.watch(global.config.webpack.watchDelay, function (err, stats) {
+        webPackCompiler.watch(global.config.webpack.watchDelay, function (err, stats) {
             buildHandler(err, stats);
             if (initialWatchBuild) {
                 callback();
