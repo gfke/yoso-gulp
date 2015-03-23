@@ -3,7 +3,8 @@ qs         = require('querystring'),
 webpack    = require('webpack');
 
 const pathToAppRoot = '../../',
-webPackConfig = {
+pathToAppSource     = path.join(__dirname, pathToAppRoot, global.config.folders.source),
+webPackConfig       = {
     context: __dirname,
     entry: path.join(pathToAppRoot, global.config.paths.source.main),
     output: {
@@ -11,7 +12,7 @@ webPackConfig = {
         filename: global.config.filenames.temp.scripts
     },
     plugins: [
-        new webpack.NormalModuleReplacementPlugin(/config.environment.json/, './' + global.config.filenames.config)
+        new webpack.NormalModuleReplacementPlugin(/config.environment.json/, path.join(pathToAppSource, global.config.filenames.config))
     ],
     module: {
         noParse: [
@@ -28,7 +29,7 @@ webPackConfig = {
                 loader: 'babel!typescript'
             }, {
                 test: /\.(svg)$/,
-                loader: 'raw-loader'
+                loader: 'file-loader'
             }, {
                 test: /\.json$/,
                 loader: 'json'
