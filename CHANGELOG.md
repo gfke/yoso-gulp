@@ -1,3 +1,8 @@
+# 2.2.1 (2015-03-23)
+
+- Fix config overwrite with nested getter
+- Fix script output name for webpack
+
 # 2.2.0 (2015-03-23)
 
 - Implement build environment and config switch
