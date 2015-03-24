@@ -11,7 +11,10 @@ gulp.task('build-webpack', function (callback) {
         isRelease = global.config.buildProcess.isReleaseBuild;
 
     // modify some webpack config options
-    extend(webpackConfig, isRelease ? global.config.webpack.release : global.config.webpack.develop);
+    extend(true, webpackConfig, isRelease ? global.config.webpack.release : global.config.webpack.develop);
+
+    //Add the custom loaders from the app
+    webpackConfig.module.loaders = webpackConfig.module.loaders.concat(global.config.webpack.loaders);
 
     // create a single instance of the compiler to allow caching
     var webPackCompiler = webpack(webpackConfig),
