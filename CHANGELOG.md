@@ -1,3 +1,7 @@
+# 2.3.0 (2015-03-23)
+
+- Custom loaders definable by app
+
 # 2.2.1 (2015-03-23)
 
 - Fix config overwrite with nested getter
