@@ -21,7 +21,7 @@ var defaultConfig = {
                 return global.config.folders.source + '/' + global.config.filenames.patterns.scripts;
             },
             get main() {
-                return global.config.folders.source + '/' + global.config.filenames.main.index;
+                return global.config.folders.source + '/' + global.config.filenames.main.scripts;
             },
             get tests() {
                 return global.config.folders.source + '/' + global.config.filenames.patterns.tests;
@@ -131,7 +131,8 @@ var defaultConfig = {
             fullPaths: true,
             debug: true
         },
-        release: {}
+        release: {},
+        loaders:[]
     },
     serve: {
         connect: {
