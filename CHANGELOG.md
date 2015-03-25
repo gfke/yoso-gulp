@@ -1,3 +1,7 @@
+# 2.4.0 (2015-03-23)
+
+- Manage static and animated icons differently
+
 # 2.3.0 (2015-03-23)
 
 - Custom loaders definable by app
