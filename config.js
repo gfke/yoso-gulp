@@ -122,17 +122,9 @@ var defaultConfig = {
             debug: true,
             devtool: '#source-map',
             watchDelay: 200
-        }
-    },
-    browserify: {
-        develop: {
-            cache: {},
-            packageCache: {},
-            fullPaths: true,
-            debug: true
         },
         release: {},
-        loaders:[]
+        loaders: []
     },
     serve: {
         connect: {

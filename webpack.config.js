@@ -2,13 +2,18 @@ const path = require('path'),
 qs         = require('querystring'),
 webpack    = require('webpack');
 
-const pathToAppRoot = '../../',
-pathToAppSource     = path.join(__dirname, pathToAppRoot, global.config.folders.source),
-webPackConfig       = {
+const pathToAppRoot       = '../../',
+isRelease                 = global.config.buildProcess.isReleaseBuild,
+pathToAppSource           = path.join(__dirname, pathToAppRoot, global.config.folders.source),
+pathToTemp                = path.join(__dirname, pathToAppRoot + global.config.folders.temp),
+pathToRelease             = path.join(__dirname, pathToAppRoot + global.config.folders.release),
+relativePathTempToRelease = path.relative(pathToTemp, pathToRelease),
+relativePathToStatic      = path.join(relativePathTempToRelease, global.config.folders.static),
+webPackConfig             = {
     context: __dirname,
     entry: path.join(pathToAppRoot, global.config.paths.source.main),
     output: {
-        path: path.join(__dirname, pathToAppRoot + global.config.folders.temp),
+        path: pathToTemp,
         filename: global.config.filenames.temp.scripts
     },
     plugins: [
@@ -24,19 +29,29 @@ webPackConfig       = {
             {
                 test: /\.es6\.js$/,
                 loader: 'babel'
-            }, {
+            },
+            {
                 test: /\.ts$/,
                 loader: 'babel!typescript'
-            }, {
-                test: /\.(svg)$/,
-                loader: 'file-loader'
-            }, {
+            },
+            {
+                test: /\.animated\.svg$/,
+                loader: 'raw'
+            },
+            {
+                //Do not match animated SVGs
+                test: /^(?!.*\.animated\.svg$).*\.svg$/,
+                loader: 'relative-file-loader?outputPath=' + isRelease ? relativePathToStatic : global.config.folders.static
+            },
+            {
                 test: /\.json$/,
                 loader: 'json'
-            }, {
+            },
+            {
                 test: /\.html$/,
                 loader: 'raw'
-            }, {
+            },
+            {
                 test: /\.scss$/,
                 loaders: [
                     'style',
