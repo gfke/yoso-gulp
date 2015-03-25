@@ -1,4 +1,8 @@
-# 2.4.0 (2015-03-23)
+# 2.4.1 (2015-03-25)
+
+- Fix watch task to watch index.html again
+
+# 2.4.0 (2015-03-25)
 
 - Manage static and animated icons differently
 
