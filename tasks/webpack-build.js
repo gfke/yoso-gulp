@@ -10,6 +10,7 @@ gulp.task('build-webpack', function (callback) {
     var webpackConfig = require('../webpack.config.js'),
         isRelease = global.config.buildProcess.isReleaseBuild;
 
+    //TODO: Object.assign?
     // modify some webpack config options
     extend(true, webpackConfig, isRelease ? global.config.webpack.release : global.config.webpack.develop);
 

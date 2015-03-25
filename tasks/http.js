@@ -5,8 +5,9 @@
  * and file types *.css, *.scss, *.js, *.html, *.json
  */
 'use strict';
-var gulp  = require('gulp'),
-    gutil = require('gulp-util');
+var gulp        = require('gulp'),
+    gutil       = require('gulp-util'),
+    runsequence = require('run-sequence');
 
 module.exports = gulp.task('http', ['http-server', 'http-browser'], function () {
 
@@ -15,19 +16,22 @@ module.exports = gulp.task('http', ['http-server', 'http-browser'], function () 
     };
 
     /* Create gulp watcher for static app files*/
-    gulp.watch(global.config.serve.watchFiles.static, [], function () {
+    gulp.watch(global.config.serve.watchFiles.static, function () {
         gulp.run('http-refresh');
     }).on('change', logFunction);
 
     /* Create gulp watcher for the index.html*/
-    gulp.watch(global.config.serve.watchFiles.index, ['build-index'], function () {
-        gulp.run('http-refresh');
+    gulp.watch(global.config.serve.watchFiles.index, function () {
+        runsequence(
+            'build-index',
+            'http-refresh'
+        );
     }).on('change', logFunction);
 
     /* Create gulp watcher for files that need to be compiled in the webpack bundle*/
     /*
-    gulp.watch(global.config.serve.watchFiles, ['build-webpack'], function () {
-        gulp.run('http-refresh');
-    }).on('change', logFunction);
-    */
+     gulp.watch(global.config.serve.watchFiles, ['build-webpack'], function () {
+     gulp.run('http-refresh');
+     }).on('change', logFunction);
+     */
 });
