@@ -41,7 +41,7 @@ webPackConfig             = {
             {
                 //Do not match animated SVGs
                 test: /^(?!.*\.animated\.svg$).*\.svg$/,
-                loader: 'relative-file-loader?outputPath=' + isRelease ? relativePathToStatic : global.config.folders.static
+                loader: 'relative-file-loader?outputPath=' + (isRelease ? relativePathToStatic : global.config.folders.static)
             },
             {
                 test: /\.json$/,
