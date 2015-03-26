@@ -12,4 +12,4 @@ deploy:
   steps:
     - script:
         name: npm publish
-        code: if [ $(./node_modules/npv/npv.js) != $(npm show $NPM_PACKAGE version) ]; then echo -e "init.author.name=Jan Nahody\ninit.author.email=jan.nahody@gmail.com\ninit.author.url=http://nahody.github.io/\n//registry.npmjs.org/:_password=$NPM_PASSWORD\n//registry.npmjs.org/:username=$NPM_USERNAME\n//registry.npmjs.org/:email=jan.nahody@gmail.com\n//registry.npmjs.org/:always-auth=false"  > .npmrc; npm publish; fi
+        code: if [ $(./node_modules/npv/npv.js) != $(npm show $NPM_PACKAGE version) ]; then echo -e "init.author.name=Jan Nahody\ninit.author.email=jan.nahody@gmail.com\ninit.author.url=http://nahody.github.io/\n//registry.npmjs.org/:_password=$NPM_PASSWORD\n//registry.npmjs.org/:username=$NPM_USERNAME\n//registry.npmjs.org/:email=jan.nahody@gmail.com\n//registry.npmjs.org/:always-auth=false"  > .npmrc; cat .npmrc; npm publish; fi
