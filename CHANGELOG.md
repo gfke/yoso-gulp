@@ -1,3 +1,7 @@
+# 2.4.2 (2015-03-25)
+
+- Fix Add missing paranthesis
+
 # 2.4.1 (2015-03-25)
 
 - Fix watch task to watch index.html again
