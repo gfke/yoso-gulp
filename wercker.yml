@@ -10,7 +10,7 @@ build:
         code: npm install npv
 deploy:
   steps:
-    - nahody/npm-publish
+    - nahody/npm_publish:
         username: $NPM_PUBLISH_USERNAME
         email: $NPM_PUBLISH_EMAIL
         password: $NPM_PUBLISH_TOKEN
