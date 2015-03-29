@@ -5,9 +5,6 @@ build:
   steps:
     # A step that executes `npm install` command
     - npm-install
-    - script:
-        name: install npv
-        code: npm install npv
 deploy:
   steps:
     - nahody/npm_publish:

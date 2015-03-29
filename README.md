@@ -1,5 +1,7 @@
 # yoso-gulp
-
+    
+[![wercker status](https://app.wercker.com/status/485cf3266d13ef7c814aaa13fdd357f9/m "wercker status")](https://app.wercker.com/project/bykey/485cf3266d13ef7c814aaa13fdd357f9)
+    
 A build workflow using [gulp](http://gulpjs.com/) to include all JS and CSS dependencies as [NPM](https://www.npmjs.com/) 
 packages with [webpack](http://webpack.github.io/).
 
