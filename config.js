@@ -115,7 +115,8 @@ var defaultConfig = {
         useTemplateCache: false,
         isReleaseBuild: false,
         cacheKey: 'dev',
-        environment: 'develop'
+        environment: 'develop',
+        addScriptElementsWithAsync: false
     },
     webpack: {
         develop: {

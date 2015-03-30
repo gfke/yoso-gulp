@@ -19,7 +19,7 @@ module.exports = gulp.task('build-index', function () {
             minifyHTML(global.config.minifyHtml)))
         // Insert link to bundled scripts, either with or without cache key
         .pipe(replace('<!--scripts-->',
-            '<script async src="' + global.config.filenames.release.scripts + '"></script>'))
+            '<script ' + (global.config.buildProcess.addScriptElementsWithAsync ? 'true' : '') + 'src="' + global.config.filenames.release.scripts + '"></script>'))
         // Copy to app/temp folder
         .pipe(gulp.dest(gulpif(isRelease,
             global.config.folders.release,
