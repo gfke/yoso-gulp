@@ -87,7 +87,7 @@ linters:
     convention: BEM # hyphenated_lowercase or 'BEM', or a regex pattern
 
   NestingDepth:
-    enabled: true
+    enabled: false
     max_depth: 3
 
   PlaceholderInExtend:
@@ -99,7 +99,7 @@ linters:
     max_properties: 10
 
   PropertySortOrder:
-    enabled: true
+    enabled: false
     order: SMACSS
     separate_groups: false
     ignore_unspecified: false
@@ -115,7 +115,7 @@ linters:
     allow_element_with_id: false
 
   SelectorDepth:
-    enabled: true
+    enabled: false
     max_depth: 3
 
   SelectorFormat:

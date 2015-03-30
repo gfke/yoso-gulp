@@ -1,3 +1,7 @@
+# 2.5.2 (2015-03-10)
+
+- Change SCSS lint rules
+
 # 2.5.1 (2015-03-10)
 
 - Downgrade sass-loader to 0.4.2
