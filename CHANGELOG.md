@@ -1,8 +1,12 @@
+# 2.5.1 (2015-03-10)
+
+- Downgrade sass-loader to 0.4.2
+
 # 2.5.0 (2015-03-30)
 
 - Make async attribute configurable
 
-# 2.4.4 (2015-03-25)
+# 2.4.4 (2015-03-30)
 
 - Update sass-loader to 1.0.0
 
