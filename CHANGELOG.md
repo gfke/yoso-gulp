@@ -1,3 +1,7 @@
+# 2.4.4 (2015-03-25)
+
+- Update sass-loader to 1.0.0
+
 # 2.4.2 (2015-03-25)
 
 - Fix Add missing paranthesis
