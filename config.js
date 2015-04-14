@@ -8,6 +8,9 @@ var defaultConfig = {
         static: './static',
         scss: './styles',
         temp: './.tmp',
+        get tempTests() {
+            return global.config.folders.temp + '/tests';
+        },
         release: './app',
         gulpConfig: './node_modules/yoso-gulp/'
     },
@@ -42,6 +45,9 @@ var defaultConfig = {
             },
             get index() {
                 return global.config.folders.temp + '/*.html';
+            },
+            get tests() {
+                return global.config.folders.tempTests + '/' + global.config.filenames.patterns.tests;
             }
         }
     },
