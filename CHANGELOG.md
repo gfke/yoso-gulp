@@ -1,3 +1,7 @@
+# 2.6.0 (2015-04-14)
+
+- Enable ES6 unit tests
+
 # 2.5.2 (2015-03-10)
 
 - Change SCSS lint rules

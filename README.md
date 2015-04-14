@@ -113,3 +113,5 @@ in this module (local settings are ignored) to ensure same sass style and qualit
 ### unit-test
 This task runs your unit tests directly in Node using [Jasmine](http://jasmine.github.io/)
 No [karma](http://karma-runner.github.io) or [phantomJs](http://phantomjs.org/) necessary
+Unit tests as well as the tested source files may be written in ES6 as both are compiled in a tmp
+folder before executed
