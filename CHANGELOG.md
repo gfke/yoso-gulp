@@ -1,3 +1,7 @@
+# 2.6.1 (2015-04-16)
+
+- Move unit-test to own run level
+
 # 2.6.0 (2015-04-14)
 
 - Enable ES6 unit tests
