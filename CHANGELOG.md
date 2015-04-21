@@ -1,3 +1,7 @@
+# 2.6.2 (2015-04-21)
+
+- Make unit-tests run in sequence
+
 # 2.6.1 (2015-04-16)
 
 - Move unit-test to own run level
