@@ -121,7 +121,14 @@ var defaultConfig = {
         useTemplateCache: false,
         isReleaseBuild: false,
         cacheKey: 'dev',
-        environment: 'develop',
+        get environment() {
+            if (process.env['FRONTEND_ENV']) {
+                return process.env['FRONTEND_ENV'];
+            } else {
+                return 'develop';
+            }
+        }
+        ,
         addScriptElementsWithAsync: false
     },
     webpack: {

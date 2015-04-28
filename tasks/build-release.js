@@ -25,7 +25,6 @@ module.exports = gulp.task('build-release', ['clean', 'build-release-clean', 'li
     scriptFileName = insertCacheKey(scriptFileName, cacheKey);
     styleFileName = insertCacheKey(styleFileName, cacheKey);
 
-    global.config.buildProcess.environment = 'release';
     global.config.buildProcess.isReleaseBuild = true;
     global.config.buildProcess.cacheKey = cacheKey;
     global.config.filenames.release.scripts = scriptFileName;
