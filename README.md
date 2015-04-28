@@ -111,3 +111,4 @@ No [karma](http://karma-runner.github.io) or [phantomJs](http://phantomjs.org/) 
 Unit tests as well as the tested source files may be written in ES6 as both are compiled in a tmp
 folder before executed
 **NOTE: This will only compile the first tier sources and tests! If you import another module that is written in ES6 you must mock it out using (mockery)[https://github.com/mfncooper/mockery/] **
+**NOTE: You may not use ES6 __import__ instead of __require__ as it is compiled to the top of the file and breaks any mockery attempts**
