@@ -1,7 +1,6 @@
 const path                                 = require('path'),
       qs                                   = require('querystring'),
-      webpack                              = require('webpack'),
-      webpackEnvironmentConfigMergerPlugin = require('./plugins/WebpackEnvironmentConfigMergerPlugin');
+      webpack                              = require('webpack');
 
 const pathToAppRoot             = '../../',
       isRelease                 = global.config.buildProcess.isReleaseBuild,
@@ -17,9 +16,6 @@ const pathToAppRoot             = '../../',
               path: pathToTemp,
               filename: global.config.filenames.temp.scripts
           },
-          plugins: [
-              new webpackEnvironmentConfigMergerPlugin(/package.json/, global.config.buildProcess.environment)
-          ],
           module: {
               noParse: [
                   /[\/\\]angular\.js$/,
@@ -45,7 +41,12 @@ const pathToAppRoot             = '../../',
                       loader: 'relative-file-loader?outputPath=' + (isRelease ? relativePathToStatic : global.config.folders.static)
                   },
                   {
-                      test: /\.json$/,
+                      test: /package\.json/,
+                      loader: 'environment-config-webpack-loader?environment=' + global.config.buildProcess.environment
+                  },
+                  {
+                      //Do not match (*.)package.json
+                      test: /^(?!.*\.?package\.json).*\.json/,
                       loader: 'json'
                   },
                   {
