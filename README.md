@@ -37,8 +37,6 @@ non-minimized version and adds watcher for file changes
 Creates a connect server with livereload to serve the current state of the application and all dependencies
 Opens your development browser to view the application
 
-![alt workflow image](develop.png)
-
 ### build-docs
 Parses all comments in the Javascript code using [JSdoc](http://usejsdoc.org/) and
 automagically creates a browseable Wiki on the Github repository of your project.
@@ -50,9 +48,6 @@ Sets all config values necessary for build, creates the cache key.
 Builds all sources like the development workflow but additionally minifies all JS, CSS and HTML sources
  and copies the minified version to the app folder, also renaming them to include the cache key.
 Finally copies all static files and html templates to the app folder making it ready to be deployed.
-
-![alt workflow image](build-release.png)
-
 
 ### code-quality
 Runs all code quality tasks for checking code and style conventions and also runs all tests
