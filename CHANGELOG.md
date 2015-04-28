@@ -1,3 +1,8 @@
+# 3.0.0 (2015-04-28)
+
+- Use environment-config-webpack-loader
+- Remove support for replacing config.environment.json files
+
 # 2.6.2 (2015-04-21)
 
 - Make unit-tests run in sequence
