@@ -1,3 +1,8 @@
+# 3.0.3 (2015-04-29)
+
+- Fix dependency versions with npm-shrinkwrap.json
+- reenable unit tests
+
 # 3.0.2 (2015-04-29)
 
 - Deactivate unit tests due to bug in jasmine 2.3.0

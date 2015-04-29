@@ -7,6 +7,8 @@ packages with [webpack](http://webpack.github.io/).
 
 See [Wiki](https://github.com/gfke/yoso-gulp/wiki) for more details
 
+**NOTE: Dependency versions are fixed to distinct versions via npm-shrinkwrap!**
+
 ## Install
 ```bash
 $ npm install --save-dev gfke/yoso-gulp
