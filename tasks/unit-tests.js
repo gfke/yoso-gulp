@@ -10,32 +10,29 @@ var gulp        = require('gulp'),
  * Compiles sources and test from ES6 to ES5 via babel before running them
  */
 module.exports = gulp.task('unit-test', function (cb) {
-    //deactivate out due to bug in jasmine 2.3.0
-    //['unit-test'],
 
-    return cb();
-    /*gulp.task('build-source-for-tests', function () {
-     return gulp.src(global.config.paths.source.scripts)
-     .pipe(babel({sourceMaps: false}))
-     .pipe(gulp.dest(global.config.folders.tempTests));
-     });
+    gulp.task('build-source-for-tests', function () {
+        return gulp.src(global.config.paths.source.scripts)
+            .pipe(babel({sourceMaps: false}))
+            .pipe(gulp.dest(global.config.folders.tempTests));
+    });
 
-     gulp.task('build-tests', function () {
-     return gulp.src(global.config.paths.source.tests)
-     .pipe(babel({sourceMaps: false}))
-     .pipe(gulp.dest(global.config.folders.tempTests));
-     });
+    gulp.task('build-tests', function () {
+        return gulp.src(global.config.paths.source.tests)
+            .pipe(babel({sourceMaps: false}))
+            .pipe(gulp.dest(global.config.folders.tempTests));
+    });
 
-     gulp.task('run-tests', function () {
-     return gulp.src(global.config.paths.temp.tests)
-     .pipe(jasmine(global.config.jasmine));
-     });
+    gulp.task('run-tests', function () {
+        return gulp.src(global.config.paths.temp.tests)
+            .pipe(jasmine(global.config.jasmine));
+    });
 
-     runsequence(
-     'build-source-for-tests',
-     'build-tests',
-     'run-tests',
-     cb
-     );*/
+    runsequence(
+        'build-source-for-tests',
+        'build-tests',
+        'run-tests',
+        cb
+    );
 
 });
