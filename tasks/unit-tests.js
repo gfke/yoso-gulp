@@ -13,13 +13,13 @@ module.exports = gulp.task('unit-test', function (cb) {
 
     gulp.task('build-source-for-tests', function () {
         return gulp.src(global.config.paths.source.scripts)
-            .pipe(babel())
+            .pipe(babel({sourceMaps: false}))
             .pipe(gulp.dest(global.config.folders.tempTests));
     });
 
     gulp.task('build-tests', function () {
         return gulp.src(global.config.paths.source.tests)
-            .pipe(babel())
+            .pipe(babel({sourceMaps: false}))
             .pipe(gulp.dest(global.config.folders.tempTests));
     });
 
@@ -33,6 +33,6 @@ module.exports = gulp.task('unit-test', function (cb) {
         'build-tests',
         'run-tests',
         cb
-    )
+    );
 
 });

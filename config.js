@@ -73,7 +73,7 @@ var defaultConfig = {
         patterns: {
             scripts: '/**/*.js',
             styles: '/**/*.scss',
-            tests: '/**/*.spec.js',
+            tests: '/**/*.spec*.js',
             templates: '/**/*.html'
         },
         get config() {
