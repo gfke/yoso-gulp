@@ -1,3 +1,8 @@
+# 3.0.1 (2015-04-29)
+
+- Fix glob patter for ES6 tests 
+- Deactivate source maps for test compilation
+
 # 3.0.0 (2015-04-28)
 
 - Use environment-config-webpack-loader
