@@ -1,3 +1,7 @@
+# 3.0.2 (2015-04-29)
+
+- Deactivate unit tests due to bug in jasmine 2.3.0
+
 # 3.0.1 (2015-04-29)
 
 - Fix glob patter for ES6 tests 
