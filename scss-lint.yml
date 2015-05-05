@@ -82,7 +82,7 @@ linters:
     force_nesting: true
 
   NameFormat:
-    enabled: true
+    enabled: false
     allow_leading_underscore: true
     convention: BEM # hyphenated_lowercase or 'BEM', or a regex pattern
 
