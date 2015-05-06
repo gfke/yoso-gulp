@@ -1,3 +1,7 @@
+#HEAD
+
+- Remove build-docs task
+
 # 3.0.3 (2015-04-29)
 
 - Fix dependency versions with npm-shrinkwrap.json
