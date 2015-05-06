@@ -1,3 +1,7 @@
+# 3.1.0 (2015-05-06)
+
+- Integrate watch-unit-test task
+
 # 3.0.4 (2015-05-05)
 
 - Disable 'NameFormat' scss lint rule
