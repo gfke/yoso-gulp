@@ -1,3 +1,7 @@
+# 3.2.0 (2015-05-20)
+
+- Update node-sass to 3.1.1
+
 # 3.1.0 (2015-05-06)
 
 - Integrate watch-unit-test task
