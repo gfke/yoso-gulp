@@ -56,7 +56,12 @@
         "<",
         "<="
     ],
-    "disallowImplicitTypeConversion": ["string"],
+    "disallowImplicitTypeConversion": [
+        "numeric",
+        "boolean",
+        "binary",
+        "string"
+    ],
     "disallowKeywords": ["with"],
     "disallowMultipleLineBreaks": true,
     "disallowMultipleLineStrings": true,

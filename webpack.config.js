@@ -20,12 +20,21 @@ const pathToAppRoot             = '../../',
               noParse: [
                   /[\/\\]angular\.js$/,
                   /[\/\\]angular-ui-router\.js$/,
-                  /[\/\\]angular-translate\.js$/
+                  /[\/\\]angular-translate\.js$/,
+                  /[\/\\]angular-animate\.js$/,
+                  /[\/\\]angular-touch\.js$/,
+                  /[\/\\]hotkeys\.js$/,
+                  /[\/\\]moment\.js/,
+                  /[\/\\]babel\.js/,
+                  /lodash/,
+                  /locale/,
+                  /webpack/,
+                  /\.html$/
               ],
               loaders: [
                   {
                       test: /\.es6\.js$/,
-                      loader: 'babel'
+                      loader: 'babel?cacheDirectory=true'
                   },
                   {
                       test: /\.ts$/,
