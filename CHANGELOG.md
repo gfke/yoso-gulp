@@ -1,4 +1,8 @@
 
+# 3.3.1 (2015-06-02)
+
+- Push version to force republish
+
 # 3.3.0 (2015-06-02)
 
 - Remove build-docs task
