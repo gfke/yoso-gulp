@@ -1,4 +1,8 @@
 
+# 3.3.3 (2015-06-02)
+
+- Fix npm-shrinkwrap file
+
 # 3.3.2 (2015-06-02)
 
 - Fix npm-shrinkwrap version
