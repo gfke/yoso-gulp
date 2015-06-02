@@ -1,10 +1,12 @@
+
+# 3.3.0 (2015-06-02)
+
+- Remove build-docs task
+- Performance improvements
+
 # 3.2.0 (2015-05-20)
 
 - Update node-sass to 3.1.1
-
-#HEAD
-
-- Remove build-docs task
 
 # 3.1.0 (2015-05-06)
 
