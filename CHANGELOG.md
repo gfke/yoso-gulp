@@ -1,4 +1,8 @@
 
+# 3.3.2 (2015-06-02)
+
+- Fix npm-shrinkwrap version
+
 # 3.3.1 (2015-06-02)
 
 - Push version to force republish

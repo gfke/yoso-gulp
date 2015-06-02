@@ -1,6 +1,6 @@
 {
   "name": "yoso-gulp",
-  "version": "3.2.0",
+  "version": "3.3.2",
   "dependencies": {
     "autoprefixer-loader": {
       "version": "1.2.0",
