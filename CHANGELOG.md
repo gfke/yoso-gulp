@@ -1,4 +1,8 @@
 
+# 3.4.0 (2015-06-18)
+
+- Add app source as resolve root for modules
+
 # 3.3.3 (2015-06-02)
 
 - Fix npm-shrinkwrap file

@@ -16,6 +16,9 @@ const pathToAppRoot             = '../../',
               path: pathToTemp,
               filename: global.config.filenames.temp.scripts
           },
+          resolve: {
+              root:[pathToAppSource]
+          },
           module: {
               noParse: [
                   /[\/\\]angular\.js$/,
