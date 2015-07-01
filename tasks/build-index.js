@@ -13,7 +13,7 @@ var gulp       = require('gulp'),
 module.exports = gulp.task('build-index', function () {
     var isRelease = global.config.buildProcess.isReleaseBuild;
 
-    var mainScriptTag      = '<script ' + (global.config.buildProcess.addScriptElementsWithAsync ? 'true' : '') + 'src="' + global.config.filenames.release.scripts + '"></script>',
+    var mainScriptTag      = '<script ' + (global.config.buildProcess.addScriptElementsWithAsync ? 'async' : '') + ' src="' + global.config.filenames.release.scripts + '"></script>',
         scriptKeyInjectTag = '<script type="application/javascript">window.gfke = {cacheKey:"' + global.config.buildProcess.cacheKey + '"}</script>';
 
 
