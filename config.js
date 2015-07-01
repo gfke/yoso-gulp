@@ -84,8 +84,8 @@ var defaultConfig = {
         verbose: true,
         includeStackTrace: true
     },
-    get jsLint() {
-        return global.config.folders.gulpConfig + '.jshintrc';
+    get esLint() {
+        return global.config.folders.gulpConfig + '.eslintrc';
     },
     get jsCs() {
         return {

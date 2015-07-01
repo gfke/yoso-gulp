@@ -1,19 +1,19 @@
 'use strict';
 
 var gulp         = require('gulp'),
-    jshint       = require('gulp-jshint'),
+    eslint       = require('gulp-eslint'),
     jscs         = require('gulp-jscs'),
-    stylish      = require('jshint-stylish'),
     notifyErrors = require('../utils/error-notifier');
 
 /**
- * Runs jsLint on the provided Javascript files
+ * Runs eslint and jscs on the provided Javascript files
  * Uses a global lint config to evaluate errors
  */
 module.exports = gulp.task('lint-scripts', function () {
     return gulp.src(global.config.paths.source.scripts)
-        .pipe(jshint(global.config.jsLint))
+        .pipe(eslint(global.config.esLint))
         .pipe(jscs(global.config.jsCs))
-        .pipe(jshint.reporter(stylish))
+        .pipe(eslint.format())
+        .pipe(eslint.failOnError())
         .on('error', notifyErrors);
 });
