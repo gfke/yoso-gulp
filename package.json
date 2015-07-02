@@ -1,6 +1,6 @@
 {
   "name": "yoso-gulp",
-  "description": "A build workflow using gulp to include all JS and CSS dependencies as NPM packages with browserify and rework",
+  "description": "A build workflow using gulp to include all JS and CSS dependencies as NPM packages build a deployable package with webpack",
   "version": "3.4.0",
   "repository": {
     "type": "git",

@@ -13,13 +13,18 @@ var gulp       = require('gulp'),
 module.exports = gulp.task('build-index', function () {
     var isRelease = global.config.buildProcess.isReleaseBuild;
 
+    var mainScriptTag      = '<script ' + (global.config.buildProcess.addScriptElementsWithAsync ? 'async' : '') + ' src="' + global.config.filenames.release.scripts + '"></script>',
+        scriptKeyInjectTag = '<script type="application/javascript">window.gfke = {cacheKey:"' + global.config.buildProcess.cacheKey + '"}</script>';
+
+
     return gulp.src(global.config.paths.source.index)
         // Minify HTML
         .pipe(gulpif(isRelease,
             minifyHTML(global.config.minifyHtml)))
         // Insert link to bundled scripts, either with or without cache key
+        //Also expose cache key as global
         .pipe(replace('<!--scripts-->',
-            '<script ' + (global.config.buildProcess.addScriptElementsWithAsync ? 'true' : '') + 'src="' + global.config.filenames.release.scripts + '"></script>'))
+            mainScriptTag + scriptKeyInjectTag))
         // Copy to app/temp folder
         .pipe(gulp.dest(gulpif(isRelease,
             global.config.folders.release,
