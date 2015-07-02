@@ -1,3 +1,6 @@
+# 3.5.0 (2015-07-02)
+
+- Add build cache key to global
 
 # 3.4.0 (2015-06-18)
 
