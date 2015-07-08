@@ -8,9 +8,6 @@ var defaultConfig = {
         static: './static',
         scss: './styles',
         temp: './.tmp',
-        get tempTests() {
-            return global.config.folders.temp + '/tests';
-        },
         release: './app',
         gulpConfig: './node_modules/yoso-gulp/'
     },
@@ -47,13 +44,14 @@ var defaultConfig = {
                 return global.config.folders.temp + '/*.html';
             },
             get tests() {
-                return global.config.folders.tempTests + '/' + global.config.filenames.patterns.tests;
+                return global.config.folders.temp + '/' + global.config.filenames.patterns.tests;
             }
         }
     },
     filenames: {
         main: {
-            scripts: 'index.js'
+            scripts: 'index.js',
+            tests: 'index.spec.js'
         },
         html: {
             index: 'index.html'
@@ -120,6 +118,7 @@ var defaultConfig = {
     buildProcess: {
         useTemplateCache: false,
         isReleaseBuild: false,
+        isTestBuild: false,
         cacheKey: 'dev',
         get environment() {
             if (process.env['FRONTEND_ENV']) {
@@ -135,9 +134,15 @@ var defaultConfig = {
         develop: {
             debug: true,
             devtool: '#source-map',
-            watchDelay: 200
+            watchDelay: 200,
+            watch: true
         },
-        release: {},
+        test: {
+            watch: false
+        },
+        release: {
+            watch: false
+        },
         loaders: []
     },
     serve: {
