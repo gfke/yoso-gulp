@@ -1,10 +1,15 @@
 'use strict';
-var gulp = require('gulp');
+var gulp        = require('gulp'),
+    runsequence = require('run-sequence');
 
 /**
  * Watch source and tests for changes an run the test instantly
  */
 module.exports = gulp.task('watch-unit-test', function (cb) {
-    gulp.watch(global.config.paths.source.tests, ['unit-test']);
-    gulp.watch(global.config.paths.source.scripts, ['unit-test']);
+    global.config.webpack.test.watch = true;
+
+    runsequence(
+        'unit-test',
+        cb
+    );
 });

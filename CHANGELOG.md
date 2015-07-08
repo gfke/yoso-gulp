@@ -1,4 +1,8 @@
 
+# HEAD
+
+- Use webpack to build unit tests
+
 # 3.4.0 (2015-06-18)
 
 - Add app source as resolve root for modules

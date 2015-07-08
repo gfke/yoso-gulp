@@ -110,9 +110,5 @@ in this module (local settings are ignored) to ensure same sass style and qualit
 ### unit-test
 This task runs your unit tests directly in Node using [Jasmine](http://jasmine.github.io/)
 No [karma](http://karma-runner.github.io) or [phantomJs](http://phantomjs.org/) necessary
-Unit tests as well as the tested source files may be written in ES6 as both are compiled in a tmp
+Unit tests as well as the tested source files may be written in ES6 as both are compiled via webpack in the tmp
 folder before executed  
-
-**NOTE: This will only compile the first tier sources and tests! If you import another module that is written in ES6 you must mock it out using (mockery)[https://github.com/mfncooper/mockery/] **  
-
-**NOTE: You may not use ES6 __import__ instead of __require__ as it is compiled to the top of the file and breaks any mockery attempts**
