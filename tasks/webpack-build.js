@@ -11,11 +11,11 @@ gulp.task('build-webpack', function (callback) {
         isTest        = global.config.buildProcess.isTestBuild,
         isRelease     = global.config.buildProcess.isReleaseBuild;
 
-    // modify some webpack config options
-    if (isRelease) {
-        extend(true, webpackConfig, global.config.webpack.release);
-    } else if (isTest) {
+        // modify some webpack config options
+    if (isTest) {
         extend(true, webpackConfig, global.config.webpack.test);
+    } else if (isRelease) {
+        extend(true, webpackConfig, global.config.webpack.release);
     } else {
         extend(true, webpackConfig, global.config.webpack.develop);
     }

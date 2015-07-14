@@ -1,3 +1,7 @@
+# 4.0.2
+
+- Fix build-release task
+
 # 4.0.0
 
 - Use webpack to build unit tests
