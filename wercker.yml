@@ -1,4 +1,4 @@
-box: nahody/nodejs
+box: nodesource/vivid:0.12.4
 # Build definition
 build:
   # The steps that will be executed on build
