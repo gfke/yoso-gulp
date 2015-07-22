@@ -41,7 +41,7 @@ const pathToAppRoot             = '../../',
                   },
                   {
                       test: /\.ts$/,
-                      loader: 'babel!typescript'
+                      loader: 'babel!awesome-typescript?target=es5&module=commonjs'
                   },
                   {
                       test: /\.animated\.svg$/,
