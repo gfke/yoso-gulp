@@ -1,6 +1,5 @@
 'use strict';
-var gulp        = require('gulp'),
-    runsequence = require('run-sequence');
+var runsequence = require('run-sequence');
 /**
  * Insert the cache key before the extension of the file
  * @param {string} filename
@@ -17,23 +16,25 @@ function insertCacheKey(filename, cacheKey) {
  * Set all config values necessary for build, create the cache key and update the filenames
  * and call 'build-webpack', 'build-index' and after that 'BuildReleaseScripts', 'BuildReleaseStyles'
  */
-module.exports = gulp.task('build-release', ['clean', 'build-release-clean', 'lint-scripts', 'lint-styles'], function () {
-    var cacheKey = new Date().getTime(),
-        scriptFileName = global.config.filenames.release.scripts,
-        styleFileName = global.config.filenames.release.styles;
+module.exports = function (gulp) {
+    gulp.task('build-release', ['clean', 'build-release-clean', 'lint-scripts', 'lint-styles'], function () {
+        var cacheKey       = new Date().getTime(),
+            scriptFileName = global.config.filenames.release.scripts,
+            styleFileName  = global.config.filenames.release.styles;
 
-    scriptFileName = insertCacheKey(scriptFileName, cacheKey);
-    styleFileName = insertCacheKey(styleFileName, cacheKey);
+        scriptFileName = insertCacheKey(scriptFileName, cacheKey);
+        styleFileName = insertCacheKey(styleFileName, cacheKey);
 
-    global.config.buildProcess.isReleaseBuild = true;
-    global.config.buildProcess.cacheKey = cacheKey;
-    global.config.filenames.release.scripts = scriptFileName;
-    global.config.filenames.release.styles = styleFileName;
+        global.config.buildProcess.isReleaseBuild = true;
+        global.config.buildProcess.cacheKey = cacheKey;
+        global.config.filenames.release.scripts = scriptFileName;
+        global.config.filenames.release.styles = styleFileName;
 
-    runsequence(
-        ['unit-test'],
-        ['build-webpack', 'build-index'],
-        ['build-release-scripts', 'build-release-styles'],
-        ['build-release-copy']
-    );
-});
+        runsequence(
+            ['unit-test'],
+            ['build-webpack', 'build-index'],
+            ['build-release-scripts', 'build-release-styles'],
+            ['build-release-copy']
+        );
+    });
+};

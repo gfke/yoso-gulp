@@ -1,8 +1,9 @@
 'use strict';
 
-var gulp = require('gulp'),
-    del  = require('del');
+var del = require('del');
 
-module.exports = gulp.task('clean', function () {
-    return del([global.config.folders.temp]);
-});
+module.exports = function (gulp) {
+    gulp.task('clean', function () {
+        return del([global.config.folders.temp]);
+    });
+};
