@@ -27,9 +27,17 @@ gulp.task('build-webpack', function (callback) {
     var webPackCompiler   = webpack(webpackConfig),
         initialWatchBuild = true,
         buildHandler      = function (err, stats) {
+            //Handle exceptions during build
             if (err) {
                 throw new gutil.PluginError('build-webpack', err);
             }
+
+            //Handle errors during build
+            if (stats.hasErrors) {
+                var errors = stats.toJson({errorDetails: true}).errors;
+                throw new gutil.PluginError('build-webpack', errors.toString());
+            }
+
             gutil.log('[build-webpack]', stats.toString({
                 colors: true
             }));
