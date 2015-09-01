@@ -1,3 +1,7 @@
+# 4.1.1
+
+- Fix function invocation
+ 
 # 4.1.0
 
 - Throw error and exit on webpack build error 

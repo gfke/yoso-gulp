@@ -33,7 +33,7 @@ gulp.task('build-webpack', function (callback) {
             }
 
             //Handle errors during build
-            if (stats.hasErrors) {
+            if (stats.hasErrors()) {
                 var errors = stats.toJson({errorDetails: true}).errors;
                 throw new gutil.PluginError('build-webpack', errors.toString());
             }
