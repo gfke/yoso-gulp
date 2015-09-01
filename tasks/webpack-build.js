@@ -11,7 +11,7 @@ gulp.task('build-webpack', function (callback) {
         isTest        = global.config.buildProcess.isTestBuild,
         isRelease     = global.config.buildProcess.isReleaseBuild;
 
-        // modify some webpack config options
+    // modify some webpack config options
     if (isTest) {
         extend(true, webpackConfig, global.config.webpack.test);
     } else if (isRelease) {
@@ -26,14 +26,14 @@ gulp.task('build-webpack', function (callback) {
     // create a single instance of the compiler to allow caching
     var webPackCompiler   = webpack(webpackConfig),
         initialWatchBuild = true,
-        buildHandler      = function (err, stats) {
+        buildHandler      = function (err, stats, isWatchMode) {
             //Handle exceptions during build
             if (err) {
                 throw new gutil.PluginError('build-webpack', err);
             }
 
-            //Handle errors during build
-            if (stats.hasErrors()) {
+            //Handle errors during build only if not in watch mode
+            if (stats.hasErrors() && isWatchMode === false) {
                 var errors = stats.toJson({errorDetails: true}).errors;
                 throw new gutil.PluginError('build-webpack', errors.toString());
             }
@@ -46,11 +46,11 @@ gulp.task('build-webpack', function (callback) {
     if (webpackConfig.watch) {
         // watch webpack
         webPackCompiler.watch(global.config.webpack.watchDelay, function (err, stats) {
-            buildHandler(err, stats);
+            buildHandler(err, stats, true);
             if (initialWatchBuild) {
                 callback();
             } else {
-                //Either refresh the borwer or re-run the tests
+                //Either refresh the browser or re-run the tests
                 gulp.start(isTest ? 'run-tests' : 'http-refresh');
             }
             initialWatchBuild = false;
@@ -58,7 +58,7 @@ gulp.task('build-webpack', function (callback) {
     } else {
         // run webpack
         webPackCompiler.run(function (err, stats) {
-            buildHandler(err, stats);
+            buildHandler(err, stats, false);
             callback();
         });
     }

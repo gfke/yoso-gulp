@@ -1,4 +1,8 @@
-# 4.1.1
+# 4.1.2
+
+- Don't break on errors if in watch mode
+
+ # 4.1.1
 
 - Fix function invocation
  
