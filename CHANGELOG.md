@@ -1,3 +1,7 @@
+# 4.1.0
+
+- Throw error and exit on webpack build error 
+
 # 4.0.2
 
 - Fix build-release task

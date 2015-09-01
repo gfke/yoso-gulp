@@ -1,7 +1,7 @@
 {
   "name": "yoso-gulp",
   "description": "A build workflow using gulp to include all JS and CSS dependencies as NPM packages build a deployable package with webpack",
-  "version": "4.0.2",
+  "version": "4.1.0",
   "repository": {
     "type": "git",
     "url": "http://github.com/doroppu/yoso-gulp.git"
