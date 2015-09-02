@@ -3,8 +3,7 @@
 var gulp         = require('gulp'),
     jshint       = require('gulp-jshint'),
     jscs         = require('gulp-jscs'),
-    stylish      = require('jshint-stylish'),
-    notifyErrors = require('../utils/error-notifier');
+    stylish      = require('jshint-stylish');
 
 /**
  * Runs jsLint on the provided Javascript files
@@ -14,6 +13,5 @@ module.exports = gulp.task('lint-scripts', function () {
     return gulp.src(global.config.paths.source.scripts)
         .pipe(jshint(global.config.jsLint))
         .pipe(jscs(global.config.jsCs))
-        .pipe(jshint.reporter(stylish))
-        .on('error', notifyErrors);
+        .pipe(jshint.reporter(stylish));
 });
