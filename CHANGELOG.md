@@ -1,3 +1,7 @@
+# 4.2.0
+
+- Don't break on errors if in watch mode
+
 # 4.1.2
 
 - Don't break on errors if in watch mode
