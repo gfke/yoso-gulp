@@ -70,9 +70,5 @@
     "disallowMixedSpacesAndTabs": true,
     "requireLineFeedAtFileEnd": true,
     "validateIndentation": 4,
-    "validateQuoteMarks": "'",
-    "validateJSDoc": {
-        "checkParamNames": true,
-        "requireParamTypes": true
-    }
+    "validateQuoteMarks": "'"
 }
