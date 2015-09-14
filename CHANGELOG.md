@@ -1,8 +1,16 @@
+# 4.2.1
+
+- Update package dependencies
+
+# 4.2.0
+
+- Don't break on errors if in watch mode
+
 # 4.1.2
 
 - Don't break on errors if in watch mode
 
- # 4.1.1
+# 4.1.1
 
 - Fix function invocation
  
