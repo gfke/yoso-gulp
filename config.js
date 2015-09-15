@@ -167,7 +167,7 @@ var defaultConfig = {
             }
         },
         browser: {
-            url: 'http://localhost:8080'
+            uri: 'http://localhost:8080'
             //app: 'firefox'
         }
     }

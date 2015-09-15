@@ -15,5 +15,5 @@ var gulp    = require('gulp'),
  */
 module.exports = gulp.task('http-browser', function () {
     gulp.src('.tmp/index.html')
-        .pipe(open('', global.config.serve.browser));
+        .pipe(open(global.config.serve.browser));
 });
