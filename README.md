@@ -112,3 +112,6 @@ This task runs your unit tests directly in Node using [Jasmine](http://jasmine.g
 No [karma](http://karma-runner.github.io) or [phantomJs](http://phantomjs.org/) necessary
 Unit tests as well as the tested source files may be written in ES6 as both are compiled via webpack in the tmp
 folder before executed  
+
+### watch-unit-test
+Runs 'unit-test' and places a watcher on all files used in the build to recompile if any of these files changes
