@@ -1,3 +1,7 @@
+# 4.2.4
+
+- Reduce build output to minimum
+
 # 4.2.2
 
 - Update .jscp config file to new major release 2.0.0 of gulp-jscs
