@@ -1,9 +1,10 @@
 'use strict';
-var gulp = require('gulp');
 
-module.exports = gulp.task('code-quality', function () {
-    global.config.buildProcess.isReleaseBuild = false;
-    gulp.run(
-        ['lint-scripts', 'lint-styles', 'unit-test']
-    );
-});
+module.exports = function(gulp) {
+    gulp.task('code-quality', function () {
+        global.config.buildProcess.isReleaseBuild = false;
+        gulp.run(
+            ['lint-scripts', 'lint-styles', 'unit-test']
+        );
+    });
+}

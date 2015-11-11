@@ -1,3 +1,7 @@
+# 5.0.0
+
+- Enhanced for usage with npm 3+ and node 5+
+
 # 4.2.5
 
 - Update dependencies
