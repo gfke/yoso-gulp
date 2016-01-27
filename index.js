@@ -18,7 +18,8 @@ module.exports = function(gulp) {
     require('./tasks/http-refresh')(gulp);
     require('./tasks/http-server')(gulp);
     require('./tasks/lint-scripts')(gulp);
-    require('./tasks/lint-styles')(gulp);
+    require('./tasks/postcss-styles')(gulp);
+    require('./tasks/postcss-watch')(gulp);
     require('./tasks/unit-tests')(gulp);
     require('./tasks/watch-unit-tests')(gulp);
     require('./tasks/webpack-build')(gulp);

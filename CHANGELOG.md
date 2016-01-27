@@ -1,3 +1,7 @@
+# 5.1.0
+
+- Add PostCSS Task
+
 # 5.0.0
 
 - Enhanced for usage with npm 3+ and node 5+
