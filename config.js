@@ -7,6 +7,7 @@ var defaultConfig = {
         source: './source',
         static: './static',
         scss: './styles',
+        postcss: './postcss',
         temp: './.tmp',
         release: './app',
         gulpConfig: './node_modules/yoso-gulp/'
