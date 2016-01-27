@@ -1,3 +1,7 @@
+# 6.0.1
+
+- Away remains of SCSS
+
 # 6.0.0
 
 - Remove SCSS/SASS task
