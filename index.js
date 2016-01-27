@@ -10,7 +10,6 @@ module.exports = function(gulp) {
     require('./tasks/build-release-copy')(gulp);
     require('./tasks/build-release-http')(gulp);
     require('./tasks/build-release-scripts')(gulp);
-    require('./tasks/build-release-styles')(gulp);
     require('./tasks/develop')(gulp);
     require('./tasks/code-quality')(gulp);
     require('./tasks/http')(gulp);

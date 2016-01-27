@@ -64,16 +64,6 @@ const pathToAppRoot             = '../../',
                   {
                       test: /\.html$/,
                       loader: 'raw'
-                  },
-                  {
-                      test: /\.scss$/,
-                      loaders: [
-                          'style',
-                          'css',
-                          'autoprefixer?' + qs.stringify(global.config.autoPrefixer),
-                          'sass?' + qs.stringify(global.config.sass)
-
-                      ]
                   }
               ]
           },

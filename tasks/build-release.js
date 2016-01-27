@@ -35,7 +35,7 @@ module.exports = function(gulp) {
         runsequence(
             ['unit-test'],
             ['build-webpack', 'build-index'],
-            ['build-release-scripts', 'build-release-styles'],
+            ['build-release-scripts'],
             ['build-release-copy'],
             ['postcss-styles']
         );
