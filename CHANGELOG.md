@@ -1,3 +1,7 @@
+# 5.1.1
+
+- Remove npm shrinkwrap to enable usage of node 4.x
+
 # 5.1.0
 
 - Add PostCSS Task
