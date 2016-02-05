@@ -6,31 +6,25 @@
 'use strict';
 
 var gulp            = require('gulp'),
-    gulpif          = require('gulp-if'),
     postcss         = require('gulp-postcss'),
     cssnext         = require('postcss-cssnext'),
     cssnano         = require('cssnano'),
     autoprefixer    = require('autoprefixer'),
     postcssImport   = require('postcss-import'),
-    //styleGuide = require('postcss-style-guide'),
-    mixins          = require('postcss-mixins'),
-    nested          = require('postcss-nested'),
-    conditionals    = require('postcss-conditionals'),
-    simpleExtend    = require('postcss-simple-extend'),
-    simpleVars      = require('postcss-simple-vars');
+    discardComments = require('postcss-discard-comments'),
+    sorting         = require('postcss-sorting'),
+    precss          = require('precss');
 
 /*
  * PostCSS definition
  */
 var postcss_conf    = [
     postcssImport(),
-    mixins(),
     cssnext(),
-    nested(),
-    simpleVars(),
-    conditionals(),
-    simpleExtend(),
-    autoprefixer({ browsers: ['last 2 versions'] })
+    precss(),
+    discardComments({removeAll: true}),
+    autoprefixer({ browsers: ['last 2 versions'] }),
+    sorting()
 ];
 
 module.exports = function(gulp) {

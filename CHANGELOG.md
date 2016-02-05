@@ -1,3 +1,7 @@
+# 6.0.2
+
+- Add sorting, discardComments and replace mixins, conditions, . . . with precss.
+
 # 6.0.1
 
 - Away remains of SCSS
