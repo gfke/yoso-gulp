@@ -1,3 +1,7 @@
+# 5.1.3
+
+- Add gulp-plumber and cssnano
+
 # 5.1.2
 
 - Update postcss process
