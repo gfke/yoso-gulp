@@ -13,7 +13,8 @@ var gulp            = require('gulp'),
     postcssImport   = require('postcss-import'),
     discardComments = require('postcss-discard-comments'),
     sorting         = require('postcss-sorting'),
-    precss          = require('precss');
+    precss          = require('precss'),
+    plumber         = require('gulp-plumber');
 
 /*
  * PostCSS definition
@@ -32,9 +33,10 @@ module.exports = function(gulp) {
         var isRelease = global.config.buildProcess.isReleaseBuild;
 
         return gulp.src([global.config.folders.postcss + '/**/*.css', '!' + global.config.folders.postcss + '/**/_*.css'])
+            .pipe(plumber())
             .pipe( postcss(postcss_conf) )
             .pipe( gulp.dest( gulpif(isRelease,
                 global.config.folders.release + '/css',
                 global.config.folders.temp + '/css') ) );
     });
-}
+};

@@ -1,3 +1,7 @@
+# 6.0.3
+
+- Add gulp plumber for postCSS process.
+
 # 6.0.2
 
 - Add sorting, discardComments and replace mixins, conditions, . . . with precss.

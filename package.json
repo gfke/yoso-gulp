@@ -1,7 +1,7 @@
 {
   "name": "yoso-gulp",
   "description": "A build workflow using gulp to include all JS and CSS dependencies as NPM packages build a deployable package with webpack",
-  "version": "6.0.2",
+  "version": "6.0.3",
   "repository": {
     "type": "git",
     "url": "http://github.com/doroppu/yoso-gulp.git"
@@ -46,6 +46,7 @@
     "gulp-minify-html": "^1.0.4",
     "gulp-ng-annotate": "^1.1.0",
     "gulp-open": "^1.0.0",
+    "gulp-plumber": "^1.1.0",
     "gulp-postcss": "^6.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
