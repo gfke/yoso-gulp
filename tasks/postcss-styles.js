@@ -24,6 +24,7 @@ var postcss_conf    = [
     cssnext({ browsers: ['last 2 versions']}),
     precss(),
     discardComments({removeAll: true}),
+    cssnano(),
     sorting()
 ];
 
