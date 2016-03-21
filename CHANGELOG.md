@@ -1,3 +1,11 @@
+# 6.0.4
+
+- Update dependencies
+- Minify html templates using `html-minify-loader`
+- Remove duplicated `autoprefixer` plugin
+- Using `cssnano` to minify css
+- Fix broken gulp task (added missing `gulp-if`)
+
 # 6.0.3
 
 - Add gulp plumber for postCSS process.
