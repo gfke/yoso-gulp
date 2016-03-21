@@ -10,7 +10,6 @@ var gulp            = require('gulp'),
     postcss         = require('gulp-postcss'),
     cssnext         = require('postcss-cssnext'),
     cssnano         = require('cssnano'),
-    autoprefixer    = require('autoprefixer'),
     postcssImport   = require('postcss-import'),
     discardComments = require('postcss-discard-comments'),
     sorting         = require('postcss-sorting'),
@@ -22,10 +21,9 @@ var gulp            = require('gulp'),
  */
 var postcss_conf    = [
     postcssImport(),
-    cssnext(),
+    cssnext({ browsers: ['last 2 versions']}),
     precss(),
     discardComments({removeAll: true}),
-    autoprefixer({ browsers: ['last 2 versions'] }),
     sorting()
 ];
 
