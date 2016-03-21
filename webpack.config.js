@@ -63,9 +63,19 @@ const pathToAppRoot             = '../../',
                   },
                   {
                       test: /\.html$/,
-                      loader: 'raw'
+                      name: 'mandrillTemplates',
+                      loader: 'raw!html-minify'
                   }
               ]
+          },
+          'html-minify-loader': {
+              empty: true,        // KEEP empty attributes
+              cdata: true,        // KEEP CDATA from scripts
+              //comments: true,     // KEEP comments
+              comments: false,
+              dom: {                            // options of !(htmlparser2)[https://github.com/fb55/htmlparser2]
+                  lowerCaseAttributeNames: false,      // do not call .toLowerCase for each attribute name (Angular2 use camelCase attributes)
+              }
           },
           resolveLoader: {
               root: path.join(__dirname, 'node_modules')
