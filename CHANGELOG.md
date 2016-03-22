@@ -1,3 +1,8 @@
+# HEAD
+
+- Remove deprecated module `gulp-minify-html` and replaced it by `gulp-htmlmin`.
+- Add meta information "build date" and "build version" to `index.html` file, but only if it's enabled by the config. See configuration parameter: `global.config.buildProcess.metaInformation`
+
 # 6.0.4
 
 - Update dependencies
