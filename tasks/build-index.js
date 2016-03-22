@@ -17,8 +17,8 @@ module.exports = function(gulp) {
 
         var mainScriptTag      = '<script ' + (global.config.buildProcess.addScriptElementsWithAsync ? 'async' : '') + ' src="' + global.config.filenames.release.scripts + '"></script>',
             scriptKeyInjectTag = '<script type="application/javascript">window.gfke = {cacheKey:"' + global.config.buildProcess.cacheKey + '"}</script>',
-            versionTag         = '<meta name="build-date" content="' + ((new Date()).toISOString()) + '">',
-            buildTag           = '<meta name="build-version" content="' + pkgJson.version + '">';
+            buildVersionTag    = '<meta name="build-version" content="' + pkgJson.version + '">',
+            buildDateTag       = '<meta name="build-date" content="' + ((new Date()).toISOString()) + '">';
 
 
         return gulp.src(global.config.paths.source.index)
@@ -26,8 +26,8 @@ module.exports = function(gulp) {
             //Also expose cache key as global
             .pipe(replace('<!--scripts-->', mainScriptTag + scriptKeyInjectTag))
             // Add some meta information to the header.
-            .pipe(replace('<!--VERSION-->', versionTag))
-            .pipe(replace('<!--BUILD-->', buildTag))
+            .pipe(gulpif(global.config.buildProcess.metaInformation.withBuildVersion, replace('<!--BUILD-VERSION-->', buildVersionTag)))
+            .pipe(gulpif(global.config.buildProcess.metaInformation.withBuildDate, replace('<!--BUILD-DATE-->', buildDateTag)))
 
             // Minify HTML
             .pipe(gulpif(isRelease, htmlmin(global.config.minifyHtml)))

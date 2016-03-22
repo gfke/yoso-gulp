@@ -99,9 +99,12 @@ var defaultConfig = {
             } else {
                 return 'develop';
             }
+        },
+        addScriptElementsWithAsync: false,
+        metaInformation: {
+            withBuildVersion: true,
+            withBuildDate: true
         }
-        ,
-        addScriptElementsWithAsync: false
     },
     webpack: {
         develop: {
