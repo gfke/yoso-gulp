@@ -84,10 +84,9 @@ var defaultConfig = {
         mangle: false
     },
     minifyHtml: {
-        comments: true,
-        empty: true,
-        spare: true,
-        quotes: true
+        removeComments: true,
+        collapseWhitespace: true,
+        removeEmptyElements: true
     },
     buildProcess: {
         useTemplateCache: false,

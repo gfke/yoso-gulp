@@ -2,7 +2,7 @@
 
 var gulpif     = require('gulp-if'),
     replace    = require('gulp-replace'),
-    minifyHTML = require('gulp-minify-html');
+    htmlmin = require('gulp-htmlmin'),
 
 /**
  * This task copies the index.html file from the sources to the app folder
@@ -18,16 +18,16 @@ module.exports = function(gulp) {
 
 
         return gulp.src(global.config.paths.source.index)
-            // Minify HTML
-            .pipe(gulpif(isRelease,
-                minifyHTML(global.config.minifyHtml)))
             // Insert link to bundled scripts, either with or without cache key
             //Also expose cache key as global
             .pipe(replace('<!--scripts-->',
                 mainScriptTag + scriptKeyInjectTag))
+            // Minify HTML
+            .pipe(gulpif(isRelease, htmlmin(global.config.minifyHtml)))
+
             // Copy to app/temp folder
             .pipe(gulp.dest(gulpif(isRelease,
                 global.config.folders.release,
                 global.config.folders.temp)));
     });
-}
+};
