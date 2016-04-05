@@ -1,3 +1,7 @@
+# HEAD
+
+- FIX css files are now only minimized in release builds.
+
 # 6.0.5
 
 - Remove deprecated module `gulp-minify-html` and replaced it by `gulp-htmlmin`.
