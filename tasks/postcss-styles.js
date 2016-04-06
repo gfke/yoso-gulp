@@ -19,14 +19,21 @@ var gulp            = require('gulp'),
 /*
  * PostCSS definition
  */
-var postcss_conf    = [
-    postcssImport(),
-    cssnext({ browsers: ['last 2 versions']}),
-    precss(),
-    discardComments({removeAll: true}),
-    cssnano(),
-    sorting()
-];
+var postcss_conf         = [
+        postcssImport(),
+        cssnext({browsers: ['last 2 versions']}),
+        precss(),
+        discardComments({removeAll: true}),
+        sorting()
+    ],
+    postcss_conf_release = [
+        postcssImport(),
+        cssnext({browsers: ['last 2 versions']}),
+        precss(),
+        discardComments({removeAll: true}),
+        cssnano(),
+        sorting()
+    ];
 
 module.exports = function(gulp) {
     gulp.task('postcss-styles', [], function () {
@@ -34,7 +41,7 @@ module.exports = function(gulp) {
 
         return gulp.src([global.config.folders.postcss + '/**/*.css', '!' + global.config.folders.postcss + '/**/_*.css'])
             .pipe(plumber())
-            .pipe( postcss(postcss_conf) )
+            .pipe( gulpif(isRelease, postcss(postcss_conf_release), postcss(postcss_conf)) )
             .pipe( gulp.dest( gulpif(isRelease,
                 global.config.folders.release + '/css',
                 global.config.folders.temp + '/css') ) );
