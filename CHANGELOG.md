@@ -1,4 +1,4 @@
-# HEAD
+# 6.0.6
 
 - FIX css files are now only minimized in release builds.
 
