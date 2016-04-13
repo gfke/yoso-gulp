@@ -14,7 +14,8 @@ var gulp            = require('gulp'),
     discardComments = require('postcss-discard-comments'),
     sorting         = require('postcss-sorting'),
     precss          = require('precss'),
-    plumber         = require('gulp-plumber');
+    plumber         = require('gulp-plumber'),
+    exportVars      = require('postcss-export-vars');
 
 /*
  * PostCSS definition
@@ -24,6 +25,7 @@ var postcss_conf         = [
         cssnext({browsers: ['last 2 versions']}),
         precss(),
         discardComments({removeAll: true}),
+        exportVars({file: 'source/colors.es6', match: ['color'], type: 'js'}),
         sorting()
     ],
     postcss_conf_release = [
@@ -31,6 +33,7 @@ var postcss_conf         = [
         cssnext({browsers: ['last 2 versions']}),
         precss(),
         discardComments({removeAll: true}),
+        exportVars({file: 'source/colors.es6', match: ['color'], type: 'js'}),
         cssnano(),
         sorting()
     ];

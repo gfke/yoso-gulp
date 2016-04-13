@@ -1,3 +1,7 @@
+# 6.1.0
+
+- Add export vars as const to js file.
+
 # 6.0.6
 
 - FIX css files are now only minimized in release builds.
