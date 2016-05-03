@@ -60,7 +60,7 @@
     "postcss-autoreset": "^1.1.5",
     "postcss-cssnext": "^2.4.0",
     "postcss-discard-comments": "^2.0.3",
-    "postcss-export-vars": "^0.1.0",
+    "postcss-export-vars": "^0.2.0",
     "postcss-import": "^8.0.2",
     "postcss-sorting": "^1.1.0",
     "postcss-use": "^2.0.2",
