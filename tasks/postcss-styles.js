@@ -22,18 +22,18 @@ var gulp            = require('gulp'),
  */
 var postcss_conf         = [
         postcssImport(),
+        exportVars({file: 'source/colors.es6', match: ['color'], type: 'js'}),
         cssnext({browsers: ['last 2 versions']}),
         precss(),
         discardComments({removeAll: true}),
-        exportVars({file: 'source/colors.es6', match: ['color'], type: 'js'}),
         sorting()
     ],
     postcss_conf_release = [
         postcssImport(),
+        exportVars({file: 'source/colors.es6', match: ['color'], type: 'js'}),
         cssnext({browsers: ['last 2 versions']}),
         precss(),
         discardComments({removeAll: true}),
-        exportVars({file: 'source/colors.es6', match: ['color'], type: 'js'}),
         cssnano(),
         sorting()
     ];
