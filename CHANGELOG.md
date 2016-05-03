@@ -1,6 +1,6 @@
 # 6.1.0
 
-- Add export vars as const to js file.
+- Add export color vars as const to js file.
 
 # 6.0.6
 
