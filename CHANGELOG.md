@@ -1,3 +1,7 @@
+# 6.1.1
+
+- Add md and txt file type to static file process.
+
 # 6.1.0
 
 - Add export color vars as const to js file.
@@ -74,10 +78,10 @@
 # 4.1.1
 
 - Fix function invocation
- 
+
 # 4.1.0
 
-- Throw error and exit on webpack build error 
+- Throw error and exit on webpack build error
 
 # 4.0.2
 
@@ -135,7 +139,7 @@
 
 # 3.0.1 (2015-04-29)
 
-- Fix glob patter for ES6 tests 
+- Fix glob patter for ES6 tests
 - Deactivate source maps for test compilation
 
 # 3.0.0 (2015-04-28)
