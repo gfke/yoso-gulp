@@ -3,7 +3,7 @@
 module.exports = function(gulp) {
     var runsequence = require('run-sequence').use(gulp);
 
-    gulp.task('develop', ['clean', 'lint-scripts'], function () {
+    gulp.task('develop', ['clean'], function () {
         global.config.buildProcess.isReleaseBuild = false;
 
         runsequence(
