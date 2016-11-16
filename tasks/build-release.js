@@ -17,7 +17,7 @@ function insertCacheKey(filename, cacheKey) {
  * Set all config values necessary for build, create the cache key and update the filenames
  * and call 'build-webpack', 'build-index' and after that 'BuildReleaseScripts', 'BuildReleaseStyles'
  */
-module.exports = gulp.task('build-release', ['clean', 'build-release-clean', 'lint-scripts', 'lint-styles'], function () {
+module.exports = gulp.task('build-release', ['clean', 'build-release-clean'], function () {
     var cacheKey = new Date().getTime(),
         scriptFileName = global.config.filenames.release.scripts,
         styleFileName = global.config.filenames.release.styles;
