@@ -1,7 +1,7 @@
 {
   "name": "yoso-gulp",
   "description": "A build workflow using gulp to include all JS and CSS dependencies as NPM packages build a deployable package with webpack",
-  "version": "4.2.3",
+  "version": "4.2.4",
   "repository": {
     "type": "git",
     "url": "http://github.com/doroppu/yoso-gulp.git"
@@ -65,7 +65,7 @@
     "vinyl-source-stream": "^1.1.0",
     "webpack": "^1.12.1",
     "node-sass": "^3.3.2",
-    "relative-file-loader": "git://github.com/doroppu/relative-file-loader",
-    "environment-config-webpack-loader": "git://github.com/doroppu/environment-config-webpack-loader#0.0.1"
+    "relative-file-loader": "git://github.com/gfke/relative-file-loader",
+    "environment-config-webpack-loader": "git://github.com/gfke/environment-config-webpack-loader"
   }
 }
