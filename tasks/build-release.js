@@ -19,7 +19,7 @@ function insertCacheKey(filename, cacheKey) {
 module.exports = function(gulp) {
     var runsequence = require('run-sequence').use(gulp);
 
-    gulp.task('build-release', ['clean', 'build-release-clean'], function () {
+    gulp.task('build-release', ['clean', 'build-release-clean', 'lint-scripts'], function () {
         var cacheKey = new Date().getTime(),
             scriptFileName = global.config.filenames.release.scripts,
             styleFileName = global.config.filenames.release.styles;
@@ -35,7 +35,7 @@ module.exports = function(gulp) {
         runsequence(
             ['unit-test'],
             ['build-webpack', 'build-index'],
-            ['build-release-scripts', 'build-release-styles'],
+            ['build-release-scripts'],
             ['build-release-copy'],
             ['postcss-styles']
         );

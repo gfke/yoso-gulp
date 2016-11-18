@@ -10,25 +10,33 @@ var gulp            = require('gulp'),
     postcss         = require('gulp-postcss'),
     cssnext         = require('postcss-cssnext'),
     cssnano         = require('cssnano'),
-    autoprefixer    = require('autoprefixer'),
     postcssImport   = require('postcss-import'),
     discardComments = require('postcss-discard-comments'),
     sorting         = require('postcss-sorting'),
     precss          = require('precss'),
-    plumber         = require('gulp-plumber');
+    plumber         = require('gulp-plumber'),
+    exportVars      = require('postcss-export-vars');
 
 /*
  * PostCSS definition
  */
-var postcss_conf    = [
-    postcssImport(),
-    cssnext(),
-    precss(),
-    discardComments({removeAll: true}),
-    autoprefixer({ browsers: ['last 2 versions'] }),
-    sorting(),
-    cssnano()
-];
+var postcss_conf         = [
+        postcssImport(),
+        exportVars({file: 'source/colors.es6', match: ['color'], type: 'js'}),
+        cssnext({browsers: ['last 2 versions']}),
+        precss(),
+        discardComments({removeAll: true}),
+        sorting()
+    ],
+    postcss_conf_release = [
+        postcssImport(),
+        exportVars({file: 'source/colors.es6', match: ['color'], type: 'js'}),
+        cssnext({browsers: ['last 2 versions']}),
+        precss(),
+        discardComments({removeAll: true}),
+        cssnano(),
+        sorting()
+    ];
 
 module.exports = function(gulp) {
     gulp.task('postcss-styles', [], function () {
@@ -36,9 +44,9 @@ module.exports = function(gulp) {
 
         return gulp.src([global.config.folders.postcss + '/**/*.css', '!' + global.config.folders.postcss + '/**/_*.css'])
             .pipe(plumber())
-            .pipe( postcss(postcss_conf) )
+            .pipe( gulpif(isRelease, postcss(postcss_conf_release), postcss(postcss_conf)) )
             .pipe( gulp.dest( gulpif(isRelease,
                 global.config.folders.release + '/css',
                 global.config.folders.temp + '/css') ) );
     });
-}
+};

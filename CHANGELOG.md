@@ -1,10 +1,39 @@
-# 5.1.3
+# 6.1.0
 
-- Add gulp-plumber and cssnano
+- Add export color vars as const to js file.
 
-# 5.1.2
+# 6.0.6
 
-- Update postcss process
+- FIX css files are now only minimized in release builds.
+
+# 6.0.5
+
+- Remove deprecated module `gulp-minify-html` and replaced it by `gulp-htmlmin`.
+- Add meta information "build date" and "build version" to `index.html` file, but only if it's enabled by the config. See configuration parameter: `global.config.buildProcess.metaInformation`
+
+# 6.0.4
+
+- Update dependencies
+- Minify html templates using `html-minify-loader`
+- Remove duplicated `autoprefixer` plugin
+- Using `cssnano` to minify css
+- Fix broken gulp task (added missing `gulp-if`)
+
+# 6.0.3
+
+- Add gulp plumber for postCSS process.
+
+# 6.0.2
+
+- Add sorting, discardComments and replace mixins, conditions, . . . with precss.
+
+# 6.0.1
+
+- Away remains of SCSS
+
+# 6.0.0
+
+- Remove SCSS/SASS task
 
 # 5.1.1
 
