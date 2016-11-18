@@ -1,13 +1,16 @@
 'use strict';
-var gulp        = require('gulp'),
-    runsequence = require('run-sequence');
 
-module.exports = gulp.task('develop', ['clean'], function () {
-    global.config.buildProcess.isReleaseBuild = false;
+module.exports = function(gulp) {
+    var runsequence = require('run-sequence').use(gulp);
 
-    runsequence(
-        ['unit-test'],
-        ['build-develop'],
-        'http'
-    );
-});
+    gulp.task('develop', ['clean', 'lint-scripts'], function () {
+        global.config.buildProcess.isReleaseBuild = false;
+
+        runsequence(
+            ['unit-test'],
+            ['build-develop', 'postcss-styles'],
+            ['http'],
+            'postcss-watch'
+        );
+    });
+};

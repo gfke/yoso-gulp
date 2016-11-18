@@ -6,7 +6,7 @@ var defaultConfig = {
     folders: {
         source: './source',
         static: './static',
-        scss: './styles',
+        postcss: './postcss',
         temp: './.tmp',
         release: './app',
         gulpConfig: './node_modules/yoso-gulp/'
@@ -26,17 +26,11 @@ var defaultConfig = {
             get tests() {
                 return global.config.folders.source + '/' + global.config.filenames.patterns.tests;
             },
-            get styles() {
-                return global.config.folders.scss + '/' + global.config.filenames.patterns.styles;
-            },
             get templates() {
                 return global.config.folders.source + '/' + global.config.filenames.patterns.templates;
             }
         },
         temp: {
-            get styles() {
-                return global.config.folders.temp + '/' + global.config.filenames.temp.styles;
-            },
             get scripts() {
                 return global.config.folders.temp + '/' + global.config.filenames.temp.scripts;
             },
@@ -56,10 +50,6 @@ var defaultConfig = {
         html: {
             index: 'index.html'
         },
-        scss: {
-            globalVariables: '_variables.scss',
-            globalImports: '_imports.scss'
-        },
         temp: {
             styles: 'index.css',
             scripts: 'index.js'
@@ -70,7 +60,6 @@ var defaultConfig = {
         },
         patterns: {
             scripts: '/**/*.js',
-            styles: '/**/*.scss',
             tests: '/**/*.spec*.js',
             templates: '/**/*.html'
         },
@@ -91,29 +80,13 @@ var defaultConfig = {
             configPath: global.config.folders.gulpConfig + '.jscsrc'
         };
     },
-    get scssLint() {
-        return {
-            'config': global.config.folders.gulpConfig + '/scss-lint.yml'
-        };
-    },
-    sass: {
-        sourceMap: false
-    },
     uglify: {
         mangle: false
     },
-    minifyCss: {
-        keepBreaks: false
-    },
     minifyHtml: {
-        comments: true,
-        empty: true,
-        spare: true,
-        quotes: true
-    },
-    autoPrefixer: {
-        browsers: ['last 2 versions'],
-        cascade: false
+        removeComments: true,
+        collapseWhitespace: true,
+        removeEmptyElements: true
     },
     buildProcess: {
         useTemplateCache: false,
@@ -126,9 +99,12 @@ var defaultConfig = {
             } else {
                 return 'develop';
             }
+        },
+        addScriptElementsWithAsync: false,
+        metaInformation: {
+            withBuildVersion: true,
+            withBuildDate: true
         }
-        ,
-        addScriptElementsWithAsync: false
     },
     webpack: {
         develop: {
@@ -158,9 +134,6 @@ var defaultConfig = {
             },
             get static() {
                 return global.config.folders.release + '/**/*.{js,html,css,svg,md,txt}';
-            },
-            get styles() {
-                return global.config.folders.scss + '/**/*.{css,scss}';
             },
             get index() {
                 return global.config.folders.source + '/index.html';
