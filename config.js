@@ -158,7 +158,7 @@ var defaultConfig = {
                 return global.config.folders.temp + '/**/*.{js,css,html}';
             },
             get static() {
-                return global.config.folders.release + '/**/*.{js,html,css,svg}';
+                return global.config.folders.release + '/**/*.{js,html,css,svg,md,txt}';
             },
             get styles() {
                 return global.config.folders.scss + '/**/*.{css,scss}';
